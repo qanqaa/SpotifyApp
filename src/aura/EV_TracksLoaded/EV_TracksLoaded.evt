@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="EV_TracksLoaded">
+    <aura:attribute name="internalTracks" type="Track__c[]"/>
+</aura:event>

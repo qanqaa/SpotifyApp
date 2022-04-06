@@ -1,0 +1,27 @@
+<aura:component description="SA_Search" controller="SA_SearchController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:registerEvent name="tracksLoaded" type="c:EV_TracksLoaded"/>
+
+    <aura:attribute name="searchTerm" type="String"/>
+    <aura:attribute name="internalTracks" type="Track__c[]"/>
+
+    <lightning:card title="Search" iconName="standard:search">
+        <div class="slds-form slds-p-bottom_medium slds-size_1-of-1 slds-align_absolute-center" style="display: flex;">
+            <lightning:input
+                    aura:id="nameInput"
+                    class="slds-size--4-of-12 slds-p-right_small"
+                    type="search"
+                    label="Name"
+                    placeholder="Enter track/artist name..."
+                    variant="label-hidden"
+                    value="{!v.searchTerm}"/>
+            <lightning:button
+                    class="slds-size--1-of-12"
+                    label="Search"
+                    variant="brand"
+                    onclick="{!c.onSearchClick}"/>
+        </div>
+    </lightning:card>
+    <c:Spinner aura:id='spinner'/>
+</aura:component>
+

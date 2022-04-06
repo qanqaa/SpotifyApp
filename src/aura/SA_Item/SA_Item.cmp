@@ -1,0 +1,8 @@
+<aura:component description="SA_Item">
+    <lightning:layout multipleRows="true" class="slds-p-around_small">
+        <lightning:layoutitem size="12">
+            <span class="slds-text-title_bold">Account Name: </span>
+            <span>{!v.account.Name}</span>
+        </lightning:layoutitem>
+    </lightning:layout>
+</aura:component>

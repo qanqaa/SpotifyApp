@@ -229,6 +229,30 @@
                           <MetadataEntry>
                             <option name="name" value="sobjectPartnerSoapSforceCom" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SA_SearchController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SA_SearchService" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SA_SearchCalloutService" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SpotifyDTO" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="TrackDTO" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ArtistDTO" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />
@@ -499,6 +523,26 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="pageTemplate_2_7_3" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SA_Search" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SA_Results" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="EV_TracksLoaded" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SA_Item" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SA_TrackResults" />
+                            <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
                       </option>

@@ -1,0 +1,11 @@
+<aura:component description="SA_TrackResults">
+    <aura:attribute name="showResults" type="Boolean" default="true"/>
+
+yaaay
+<!--    <aura:if isTrue="{!v.showResults}">-->
+<!--        true-->
+<!--        <aura:set attribute="else">-->
+<!--            <div class="slds-align_absolute-center" style="height:5rem">No records</div>-->
+<!--        </aura:set>-->
+<!--    </aura:if>-->
+</aura:component>

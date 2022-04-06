@@ -1,0 +1,18 @@
+<aura:component description="SA_Results" implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:handler event="c:EV_TracksLoaded" action="{!c.onTracksLoaded}"/>
+
+    <lightning:card>
+        <lightning:layout horizontalAlign="space" multipleRows="true">
+            <lightning:layoutItem  size="12"
+                                   mediumDeviceSize="6"
+                                   padding="around-small">
+                <c:SA_TrackResults/>
+            </lightning:layoutItem>
+            <lightning:layoutItem  size="12"
+                                   mediumDeviceSize="6"
+                                   padding="around-small">
+                2
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>
