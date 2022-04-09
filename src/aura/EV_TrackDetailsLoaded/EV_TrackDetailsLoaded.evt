@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="EV_TrackDetailsLoaded">
+    <aura:attribute name="track" type="TrackDTO"/>
+</aura:event>

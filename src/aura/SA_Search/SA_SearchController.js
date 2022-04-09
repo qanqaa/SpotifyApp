@@ -5,7 +5,8 @@
         let searchTerm = component.get("v.searchTerm");
         console.log('onSearchClick: ' + searchTerm);
         setTimeout($A.getCallback(function() {
-            helper.handleSearch(component, searchTerm);
+            helper.handleSearchTracks(component, searchTerm);
+            helper.handleSearchArtists(component, searchTerm);
             helper.hideSpinner(component);
         }), 1200);
     },

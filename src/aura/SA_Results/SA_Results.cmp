@@ -1,18 +1,47 @@
 <aura:component description="SA_Results" implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:handler event="c:EV_TrackDetailsLoaded" action="{!c.onTrackDetailsLoaded}"/>
+    <aura:handler event="c:EV_ArtDetLoaded" action="{!c.onArtistDetailsLoaded}"/>
     <aura:handler event="c:EV_TracksLoaded" action="{!c.onTracksLoaded}"/>
+    <aura:handler event="c:EV_ArtLoaded" action="{!c.onArtistsLoaded}"/>
 
-    <lightning:card>
-        <lightning:layout horizontalAlign="space" multipleRows="true">
-            <lightning:layoutItem  size="12"
-                                   mediumDeviceSize="6"
-                                   padding="around-small">
-                <c:SA_TrackResults/>
-            </lightning:layoutItem>
-            <lightning:layoutItem  size="12"
-                                   mediumDeviceSize="6"
-                                   padding="around-small">
-                2
-            </lightning:layoutItem>
-        </lightning:layout>
-    </lightning:card>
+    <aura:attribute name="showSearchResults" type="Boolean" default="false"/>
+    <aura:attribute name="showTrackResults" type="Boolean" default="false"/>
+    <aura:attribute name="showArtistResults" type="Boolean" default="false"/>
+    <aura:attribute name="showTrackDetails" type="Boolean" default="false"/>
+    <aura:attribute name="showArtistDetails" type="Boolean" default="false"/>
+    <aura:attribute name="track" type="Object"/>
+
+    <aura:renderIf isTrue="{!and(v.showTrackResults,v.showArtistResults)}">
+        <lightning:card>
+            <lightning:layout horizontalAlign="space" multipleRows="true">
+                <aura:renderIf isTrue="{!v.showTrackDetails}">
+                    <lightning:layoutItem size="12"
+                                          padding="around-small">
+                        <c:TD_TrackDetails/>
+                    </lightning:layoutItem>
+                </aura:renderIf>
+                <aura:renderIf isTrue="{!v.showArtistDetails}">
+                    <lightning:layoutItem size="12"
+                                          padding="around-small">
+                        <c:AD_ArtistDetails/>
+                    </lightning:layoutItem>
+                </aura:renderIf>
+
+                <aura:renderIf isTrue="{!v.showTrackResults}">
+                    <lightning:layoutItem size="12"
+                                          mediumDeviceSize="6"
+                                          padding="around-small">
+                        <c:SA_TrackResults/>
+                    </lightning:layoutItem>
+                </aura:renderIf>
+                <aura:renderIf isTrue="{!v.showArtistResults}">
+                    <lightning:layoutItem size="12"
+                                          mediumDeviceSize="6"
+                                          padding="around-small">
+                        <c:SA_ArtistResults/>
+                    </lightning:layoutItem>
+                </aura:renderIf>
+            </lightning:layout>
+        </lightning:card>
+    </aura:renderIf>
 </aura:component>

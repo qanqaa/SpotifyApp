@@ -1,25 +1,25 @@
-<aura:component description="SA_TrackResults">
-    <aura:handler event="c:EV_TracksLoaded" action="{!c.onTracksLoaded}"/>
+<aura:component description="SA_ArtistResults">
+    <aura:handler event="c:EV_ArtLoaded" action="{!c.onArtistsLoaded}"/>
 
     <aura:attribute name="showResults" type="Boolean" default="false"/>
-    <aura:attribute name="allTracks" type="Object[]"/>
+    <aura:attribute name="allArtists" type="Object[]"/>
 
     <lightning:layout horizontalAlign="space" multipleRows="true">
         <aura:if isTrue="{!v.showResults}">
-            <aura:iteration items="{!v.allTracks}" var="track">
+            <aura:iteration items="{!v.allArtists}" var="artist">
                 <lightning:layoutItem size="12"
                                       mediumDeviceSize="4"
                                       class="slds-p-bottom_small slds-p-right_small">
-                    <c:SA_Track id="{!track.id}"
-                                image="{!track.imageURL}"
-                                title="{!track.name}"
-                                artistName="{!track.artistName}"/>
+                    <c:SA_Artist id="{!artist.id}"
+                                image="{!artist.imageURL}"
+                                title="{!artist.name}"
+                                genre="{!artist.genre}"/>
                 </lightning:layoutItem>
             </aura:iteration>
             <aura:set attribute="else">
                 <div class="slds-align_absolute-center"
                      style="height:5rem">
-                    No track records found
+                    No artist records found
                 </div>
             </aura:set>
         </aura:if>

@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="EV_ArtDetLoaded">
+    <aura:attribute name="artist" type="ArtistDTO"/>
+</aura:event>

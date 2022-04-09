@@ -1,0 +1,77 @@
+<aura:component description="AD_ArtistDetails" controller="SA_ArtistController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:handler event="c:EV_ArtDetLoaded" action="{!c.onArtistDetailsLoaded}"/>
+    <aura:handler event="c:EV_ArtistTopTracksLoaded" action="{!c.onArtistTopTracksLoaded}"/>
+
+    <aura:attribute name="showDetails" type="Boolean" default="false"/>
+    <aura:attribute name="showTopTracks" type="Boolean" default="false"/>
+    <aura:attribute name="artist" type="ArtistDTO"/>
+    <aura:attribute name="topTracks" type="TrackDTO[]"/>
+
+    <aura:if isTrue="{!v.showDetails}">
+        <lightning:card>
+            <lightning:layout horizontalAlign="space" multipleRows="true">
+                <lightning:layoutItem size="12"
+                                      mediumDeviceSize="3"
+                                      padding="around-small">
+                    <img class="slds-float_left" src="{!v.artist.imageURL}" style="width:200px; height:200px;"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="12"
+                                      mediumDeviceSize="9"
+                                      padding="around-small"
+                                      class="slds-text-longform">
+                    <output class="slds-text-heading_label"
+                            value="ARTIST">
+                    </output>
+                    <br/>
+                    <output class="slds-text-heading_large"
+                            value="{!v.artist.name}">
+                    </output>
+                    <br/>
+                    <aura:renderIf isTrue="{!v.artist.genres.length > 0}">
+                        <output class="slds-text-heading_label"
+                                value="GENRES">
+                        </output>
+                        <br/>
+                        <aura:iteration items="{!v.artist.genres}" var="artGen">
+                            <output
+                                    value="{!artGen + '   '}">
+                            </output>
+                        </aura:iteration>
+                    </aura:renderIf>
+                    <br/><br/>
+                    <output class="slds-text-heading_label"
+                            value="FOLLOWERS">
+                    </output>
+                    <br/>
+                    <output
+                            value="{!v.artist.followers}">
+                    </output>
+                    <br/>
+                    <output class="slds-text-heading_label"
+                            value="POPULARITY">
+                    </output>
+                    <br/>
+                    <output
+                            value="{!v.artist.popularity}">
+                    </output>
+                    <br/>
+                </lightning:layoutItem>
+            </lightning:layout>
+            <lightning:layout horizontalAlign="space" multipleRows="true">
+                    <aura:renderIf isTrue="{!v.showTopTracks}">
+                        <aura:iteration items="{!v.topTracks}" var="topTrack">
+                            <lightning:layoutItem
+                                                  class="slds-p-bottom_small slds-p-right_small slds-size_1-of-5">
+                                <c:SA_Track id="{!topTrack.id}"
+                                            image="{!topTrack.imageURL}"
+                                            title="{!topTrack.name}"
+                                            artistName="{!topTrack.artistName}"/>
+                            </lightning:layoutItem>
+                        </aura:iteration>
+                    </aura:renderIf>
+            </lightning:layout>
+
+        </lightning:card>
+    </aura:if>
+</aura:component>
