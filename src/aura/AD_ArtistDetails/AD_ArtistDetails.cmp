@@ -28,17 +28,13 @@
                             value="{!v.artist.name}">
                     </output>
                     <br/>
-                    <aura:renderIf isTrue="{!v.artist.genres.length > 0}">
-                        <output class="slds-text-heading_label"
-                                value="GENRES">
-                        </output>
-                        <br/>
-                        <aura:iteration items="{!v.artist.genres}" var="artGen">
-                            <output
-                                    value="{!artGen + '   '}">
-                            </output>
-                        </aura:iteration>
-                    </aura:renderIf>
+                    <output class="slds-text-heading_label"
+                            value="GENRE">
+                    </output>
+                    <br/>
+                    <output
+                            value="{!v.artist.genre}">
+                    </output>
                     <br/><br/>
                     <output class="slds-text-heading_label"
                             value="FOLLOWERS">
@@ -59,17 +55,17 @@
                 </lightning:layoutItem>
             </lightning:layout>
             <lightning:layout horizontalAlign="space" multipleRows="true">
-                    <aura:renderIf isTrue="{!v.showTopTracks}">
-                        <aura:iteration items="{!v.topTracks}" var="topTrack">
-                            <lightning:layoutItem
-                                                  class="slds-p-bottom_small slds-p-right_small slds-size_1-of-5">
-                                <c:SA_Track id="{!topTrack.id}"
-                                            image="{!topTrack.imageURL}"
-                                            title="{!topTrack.name}"
-                                            artistName="{!topTrack.artistName}"/>
-                            </lightning:layoutItem>
-                        </aura:iteration>
-                    </aura:renderIf>
+                <aura:renderIf isTrue="{!v.showTopTracks}">
+                    <aura:iteration items="{!v.topTracks}" var="topTrack">
+                        <lightning:layoutItem
+                                class="slds-p-bottom_small slds-p-right_small slds-size_1-of-5">
+                            <c:SA_Track id="{!topTrack.id}"
+                                        image="{!topTrack.imageURL}"
+                                        title="{!topTrack.name}"
+                                        artistName="{!topTrack.artistName}"/>
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </aura:renderIf>
             </lightning:layout>
 
         </lightning:card>

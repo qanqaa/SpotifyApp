@@ -1,13 +1,29 @@
 public with sharing class SA_ObjectMapper {
 
-    public static TrackDTO mapToDetailedTrackDTO(Track__c track) {
+    public static TrackDTO mapToDetailedTrackDTO(Track__c track, List<Artist__c> trackArtist) {
         TrackDTO trackDTO = new TrackDTO();
         try {
             trackDTO.id = track.Id;
+            if(track.SpotifyId__c != null){
+                trackDTO.spotifyId = track.SpotifyId__c;
+            }
             trackDTO.name = track.Name;
             trackDTO.imageURL = track.ImageURL__c;
             trackDTO.duration = Integer.valueOf(track.Duration__c);
-            trackDTO.artistName = track.Artist_Name__c;
+            trackDTO.artistName = track.ArtistName__c;
+            trackDTO.albumName = track.AlbumName__c;
+            trackDTO.albumReleaseDate = string.valueOf(track.AlbumReleaseDate__c);
+
+            List<ArtistDTO> featArtistsDTOS = new List<ArtistDTO>();
+            for(Artist__c artist : trackArtist){
+                ArtistDTO artistDTO = new ArtistDTO();
+                artistDTO.id = artist.Id;
+                artistDTO.name = artist.Name;
+                featArtistsDTOS.add(artistDTO);
+            }
+            trackDTO.featArtists = featArtistsDTOS;
+
+            System.debug('TO TUTAJ' + trackDTO);
         }
         catch(Exception e){
             System.debug(e.getMessage());
@@ -20,9 +36,13 @@ public with sharing class SA_ObjectMapper {
         ArtistDTO artistDTO = new ArtistDTO();
         try {
             artistDTO.id = artist.Id;
+            artistDTO.spotifyId = artist.SpotifyId__c;
             artistDTO.name = artist.Name;
             artistDTO.imageURL = artist.ImageURL__c;
+            artistDTO.followers = Integer.valueOf(artist.Followers__c);
             artistDTO.genre = artist.Genre__c;
+            artistDTO.popularity = Integer.valueOf(artist.Popularity__c);
+
         }
         catch(Exception e){
             System.debug(e.getMessage());
@@ -107,7 +127,7 @@ public with sharing class SA_ObjectMapper {
                 trackDTO.name = track.Name;
                 trackDTO.imageURL = track.ImageURL__c;
                 trackDTO.duration = Integer.valueOf(track.Duration__c);
-                trackDTO.artistName = track.Artist_Name__c;
+                trackDTO.artistName = track.ArtistName__c;
                 trackDTOS.add(trackDTO);
             }
         } catch (Exception e) {

@@ -31,7 +31,7 @@
                     <br/>
                     <aura:iteration items="{!v.track.featArtists}" var="featArtist">
                             <output onclick="{!c.onArtistClick}"
-                                    id="{!featArtist.spotifyId}"
+                                    id="{!if(featArtist.id != null, featArtist.id, featArtist.spotifyId)}"
                                     style="cursor:pointer;"
                                     class="slds-text-link_faux"
                                     value="{!featArtist.name + '   '}">

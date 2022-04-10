@@ -2,8 +2,10 @@ public with sharing class SA_ArtistController {
 
     @AuraEnabled
     public static ArtistDTO getArtistDetails (String artistId) {
+        System.debug(artistId);
         if(SA_SearchService.getArtistDetails(artistId) != null) {
             System.debug('nie null');
+            System.debug(SA_SearchService.getArtistDetails(artistId));
             return SA_SearchService.getArtistDetails(artistId);
         }
         else {
@@ -24,6 +26,4 @@ public with sharing class SA_ArtistController {
             return SA_SearchCalloutService.getArtistTopTracksFromSpotify(artistId);
         }
     }
-
-
 }
