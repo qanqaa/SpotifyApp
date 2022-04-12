@@ -16,10 +16,10 @@ public with sharing class SA_ArtistController {
 
     @AuraEnabled
     public static List<TrackDTO> getArtistTopTracks (String artistId) {
-        if(SA_SearchService.getArtistDetails(artistId) != null) {
+        if(SA_SearchService.getArtistTopTracks(artistId).size() > 0) {
+            System.debug(SA_SearchService.getArtistTopTracks(artistId));
             System.debug('nie null');
-            //return SA_SearchService.getArtistDetails(artistId);
-            return null;
+            return SA_SearchService.getArtistTopTracks(artistId);
         }
         else {
             System.debug('spotify top tracks');

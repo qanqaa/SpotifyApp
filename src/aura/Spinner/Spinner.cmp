@@ -4,7 +4,10 @@
     <aura:method name="showSpinner" action="{!c.showSpinner}"/>
     <aura:method name="hideSpinner" action="{!c.hideSpinner}"/>
 
+    <aura:handler event="c:EV_SpinnerShow" action="{!c.showSpinner}"/>
+    <aura:handler event="c:EV_SpinnerHide" action="{!c.hideSpinner}"/>
+
     <aura:if isTrue="{!v.spinnerVisible}">
-        <lightning:spinner/>
+            <lightning:spinner/>
     </aura:if>
 </aura:component>

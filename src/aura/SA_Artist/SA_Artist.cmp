@@ -3,6 +3,8 @@
                 access="global">
     <aura:registerEvent name="artistDetailsLoaded" type="c:EV_ArtDetLoaded"/>
     <aura:registerEvent name="artistTopTracksLoaded" type="c:EV_ArtistTopTracksLoaded"/>
+    <aura:registerEvent name="showSpinner" type="c:EV_SpinnerShow"/>
+    <aura:registerEvent name="hideSpinner" type="c:EV_SpinnerHide"/>
 
     <aura:attribute name="image" type="String"/>
     <aura:attribute name="title" type="String"/>

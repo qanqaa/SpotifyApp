@@ -2,6 +2,8 @@
                 implements="force:appHostable,flexipage:availableForAllPageTypes">
     <aura:registerEvent name="artistDetailsLoaded" type="c:EV_ArtDetLoaded"/>
     <aura:registerEvent name="artistTopTracksLoaded" type="c:EV_ArtistTopTracksLoaded"/>
+    <aura:registerEvent name="showSpinner" type="c:EV_SpinnerShow"/>
+    <aura:registerEvent name="hideSpinner" type="c:EV_SpinnerHide"/>
 
     <aura:handler event="c:EV_TrackDetailsLoaded" action="{!c.onTrackDetailsLoaded}"/>
 
@@ -11,7 +13,7 @@
 
     <aura:if isTrue="{!v.showDetails}">
         <lightning:card>
-            <lightning:layout horizontalAlign="space" multipleRows="true">
+            <lightning:layout multipleRows="true">
                 <lightning:layoutItem size="12"
                                       mediumDeviceSize="3"
                                       padding="around-small">
@@ -65,9 +67,9 @@
                     <br/>
                 </lightning:layoutItem>
                 <lightning:layoutItem size="12"
-                                      mediumDeviceSize="3"
+                                      mediumDeviceSize="12"
                                       padding="around-small">
-                    <c:Rating/>
+                    <c:CommentSection objectId="{!v.track.spotifyId}"/>
                 </lightning:layoutItem>
             </lightning:layout>
         </lightning:card>

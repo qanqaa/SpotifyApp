@@ -5,6 +5,7 @@
             component.set('v.showDetails', true);
             component.set('v.track', track);
             component.set('v.durationString', this.parseDurationToString(track.duration));
+            component.find('')
         }
         else {
              component.set('v.showDetails', false);
@@ -12,6 +13,7 @@
     },
 
     handleSearch: function(component, artistId) {
+        let showSpinner = $A.get("e.c:EV_SpinnerShow").fire();
         let actionArtist = component.get("c.getArtistDetails");
         actionArtist.setParams({
             artistId: artistId
@@ -41,6 +43,7 @@
             console.log(response.getReturnValue());
             event.fire();
             console.log(response.getReturnValue());
+            let hideSpinner = $A.get("e.c:EV_SpinnerHide").fire();
         });
         $A.enqueueAction(actionArtistTrack);
     },

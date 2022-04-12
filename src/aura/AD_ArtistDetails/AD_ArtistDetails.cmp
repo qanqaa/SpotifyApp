@@ -11,63 +11,67 @@
     <aura:if isTrue="{!v.showDetails}">
         <lightning:card>
             <lightning:layout horizontalAlign="space" multipleRows="true">
-                <lightning:layoutItem size="12"
-                                      mediumDeviceSize="3"
-                                      padding="around-small">
-                    <img class="slds-float_left" src="{!v.artist.imageURL}" style="width:200px; height:200px;"/>
-                </lightning:layoutItem>
-                <lightning:layoutItem size="12"
-                                      mediumDeviceSize="9"
-                                      padding="around-small"
-                                      class="slds-text-longform">
-                    <output class="slds-text-heading_label"
-                            value="ARTIST">
-                    </output>
-                    <br/>
-                    <output class="slds-text-heading_large"
-                            value="{!v.artist.name}">
-                    </output>
-                    <br/>
-                    <output class="slds-text-heading_label"
-                            value="GENRE">
-                    </output>
-                    <br/>
-                    <output
-                            value="{!v.artist.genre}">
-                    </output>
-                    <br/><br/>
-                    <output class="slds-text-heading_label"
-                            value="FOLLOWERS">
-                    </output>
-                    <br/>
-                    <output
-                            value="{!v.artist.followers}">
-                    </output>
-                    <br/>
-                    <output class="slds-text-heading_label"
-                            value="POPULARITY">
-                    </output>
-                    <br/>
-                    <output
-                            value="{!v.artist.popularity}">
-                    </output>
-                    <br/>
-                </lightning:layoutItem>
-            </lightning:layout>
-            <lightning:layout horizontalAlign="space" multipleRows="true">
-                <aura:renderIf isTrue="{!v.showTopTracks}">
-                    <aura:iteration items="{!v.topTracks}" var="topTrack">
-                        <lightning:layoutItem
-                                class="slds-p-bottom_small slds-p-right_small slds-size_1-of-5">
-                            <c:SA_Track id="{!topTrack.id}"
-                                        image="{!topTrack.imageURL}"
-                                        title="{!topTrack.name}"
-                                        artistName="{!topTrack.artistName}"/>
+                <lightning:layoutItem size="6">
+                    <lightning:layout horizontalAlign="space" multipleRows="true">
+                        <lightning:layoutItem class="slds-p-bottom_small slds-p-right_small slds-size_3-of-12"
+                                              padding="around-small">
+                            <img class="slds-float_left" src="{!v.artist.imageURL}" style="width:200px; height:200px;"/>
                         </lightning:layoutItem>
-                    </aura:iteration>
-                </aura:renderIf>
+                        <lightning:layoutItem padding="around-small"
+                                              class="slds-text-longform slds-p-bottom_small slds-p-right_small slds-size_1-of-2">
+                            <output class="slds-text-heading_label"
+                                    value="ARTIST">
+                            </output>
+                            <br/>
+                            <output class="slds-text-heading_large"
+                                    value="{!v.artist.name}">
+                            </output>
+                            <br/>
+                            <output class="slds-text-heading_label"
+                                    value="GENRE">
+                            </output>
+                            <br/>
+                            <output
+                                    value="{!v.artist.genre}">
+                            </output>
+                            <br/><br/>
+                            <output class="slds-text-heading_label"
+                                    value="FOLLOWERS">
+                            </output>
+                            <br/>
+                            <output
+                                    value="{!v.artist.followers}">
+                            </output>
+                            <br/>
+                            <output class="slds-text-heading_label"
+                                    value="POPULARITY">
+                            </output>
+                            <br/>
+                            <output
+                                    value="{!v.artist.popularity}">
+                            </output>
+                            <br/>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <div class="slds-text-heading_large slds-p-left_medium">Related tracks</div>
+                    <lightning:layout horizontalAlign="space" multipleRows="true">
+                        <aura:renderIf isTrue="{!v.showTopTracks}">
+                            <aura:iteration items="{!v.topTracks}" var="topTrack">
+                                <lightning:layoutItem
+                                        class="slds-p-bottom_small slds-p-right_small slds-size_1-of-5">
+                                    <c:SA_Track id="{!topTrack.id}"
+                                                image="{!topTrack.imageURL}"
+                                                title="{!topTrack.name}"
+                                                artistName="{!topTrack.featArtists[0].name}"/>
+                                </lightning:layoutItem>
+                            </aura:iteration>
+                        </aura:renderIf>
+                    </lightning:layout>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="6">
+                    <c:CommentSection objectId="{!v.artist.spotifyId}"/>
+                </lightning:layoutItem>
             </lightning:layout>
-
         </lightning:card>
     </aura:if>
 </aura:component>

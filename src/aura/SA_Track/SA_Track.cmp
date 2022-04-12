@@ -2,6 +2,8 @@
                 implements="flexipage:availableForAllPageTypes,force:appHostable"
                 access="global">
     <aura:registerEvent name="trackDetailsLoaded" type="c:EV_TrackDetailsLoaded"/>
+    <aura:registerEvent name="showSpinner" type="c:EV_SpinnerShow"/>
+    <aura:registerEvent name="hideSpinner" type="c:EV_SpinnerHide"/>
 
     <aura:attribute name="image" type="String"/>
     <aura:attribute name="title" type="String"/>
@@ -10,9 +12,11 @@
 
     <lightning:card>
         <div class="slds-p-around_medium"
-             style="height:240px; width:200px; cursor:pointer; background-color:#f5f5f5;"
-             onclick="{!c.onTrackClick}">
-            <img class="slds-align_absolute-center" src="{!v.image}" style="width:150px; height:150px;"/>
+             aura:id = "trackOver"
+             style="height:200px; width:160px; cursor:pointer; background-color:#f5f5f5;"
+             onclick="{!c.onTrackClick}"
+             onmouseover="{!c.UpdateColor}">
+            <img class="slds-align_absolute-center" src="{!v.image}" style="width:100px; height:100px;"/>
             <output class="slds-align_absolute-center slds-text-title_bold"
                     value="{!v.title}"></output>
             <output class="slds-align_absolute-center"

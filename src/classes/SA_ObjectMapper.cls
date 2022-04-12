@@ -62,7 +62,17 @@ public with sharing class SA_ObjectMapper {
                     trackDTO.imageURL = item.album.images[0].url;
                 }
                 trackDTO.duration = item.duration_ms;
-                trackDTO.artistName = item.artists[0].name;
+//                trackDTO.artistName = item.artists[0].name;
+
+                List<ArtistDTO> featArtistsDTOS = new List<ArtistDTO>();
+                for(Integer i = 0; i < item.artists.size(); i++){
+                    ArtistDTO artistDTO = new ArtistDTO();
+                    artistDTO.spotifyId = item.artists[i].id;
+                    artistDTO.name = item.artists[i].name;
+                    featArtistsDTOS.add(artistDTO);
+                }
+                trackDTO.featArtists = featArtistsDTOS;
+
                 trackDTOS.add(trackDTO);
             }
         } catch (Exception e) {
@@ -83,6 +93,16 @@ public with sharing class SA_ObjectMapper {
                 }
                 trackDTO.duration = item.duration_ms;
                 trackDTO.artistName = item.artists[0].name;
+
+                List<ArtistDTO> featArtistsDTOS = new List<ArtistDTO>();
+                for(Integer i = 0; i < item.Artists.size(); i++){
+                    ArtistDTO artistDTO = new ArtistDTO();
+                    artistDTO.spotifyId = item.Artists[i].id;
+                    artistDTO.name = item.Artists[i].name;
+                    featArtistsDTOS.add(artistDTO);
+                }
+                trackDTO.featArtists = featArtistsDTOS;
+
                 trackDTOS.add(trackDTO);
             }
         } catch (Exception e) {
@@ -101,11 +121,9 @@ public with sharing class SA_ObjectMapper {
                 artistDTO.id = item.id;
                 artistDTO.name = item.name;
                 if(item.images.size() > 0){
-                    System.debug('IMAGES WCHODZI');
                     artistDTO.imageURL = item.images[0].url;
                 }
                 if(item.genres.size() > 0){
-                    System.debug('GENRES WCHODZI');
                     artistDTO.genre = item.genres[0];
                 }
                 artistDTOS.add(artistDTO);
@@ -127,7 +145,7 @@ public with sharing class SA_ObjectMapper {
                 trackDTO.name = track.Name;
                 trackDTO.imageURL = track.ImageURL__c;
                 trackDTO.duration = Integer.valueOf(track.Duration__c);
-                trackDTO.artistName = track.ArtistName__c;
+
                 trackDTOS.add(trackDTO);
             }
         } catch (Exception e) {

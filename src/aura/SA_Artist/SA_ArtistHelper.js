@@ -1,5 +1,6 @@
 ({
     handleSearch: function(component, artistId) {
+        let showSpinner = $A.get("e.c:EV_SpinnerShow").fire();
         let actionArtist = component.get("c.getArtistDetails");
         actionArtist.setParams({
             artistId: artistId
@@ -29,15 +30,8 @@
             console.log(response.getReturnValue());
             event.fire();
             console.log(response.getReturnValue());
+            let hideSpinner = $A.get("e.c:EV_SpinnerHide").fire();
         });
         $A.enqueueAction(actionArtistTrack);
-    },
-
-    showSpinner: function(component) {
-        component.find('spinner').showSpinner();
-     },
-
-    hideSpinner: function(component) {
-        component.find('spinner').hideSpinner();
     }
 })

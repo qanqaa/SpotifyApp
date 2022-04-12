@@ -1,0 +1,20 @@
+<aura:component description="CommentSection" controller="CommentSectionController">
+
+    <aura:registerEvent name="spotifyPropertiesLoaded" type="c:EV_SpotifyPropertiesLoaded"/>
+
+    <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
+
+    <aura:attribute name="objectId" type="String"/>
+
+    <lightning:card>
+            <div class="slds-text-heading_large slds-p-left_medium">Comments Section</div>
+            <lightning:layout horizontalAlign="space" multipleRows="true">
+                <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
+                    <c:CommentList objectId="{!v.objectId}"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
+                    <c:CommentInput objectId="{!v.objectId}"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+    </lightning:card>
+</aura:component>

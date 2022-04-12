@@ -4,11 +4,12 @@
     <aura:attribute name="showResults" type="Boolean" default="false"/>
     <aura:attribute name="allArtists" type="Object[]"/>
 
-    <lightning:layout horizontalAlign="space" multipleRows="true">
+    <div class="slds-text-heading_large slds-p-left_medium">Artists</div>
+    <lightning:layout multipleRows="true">
         <aura:if isTrue="{!v.showResults}">
             <aura:iteration items="{!v.allArtists}" var="artist">
                 <lightning:layoutItem size="12"
-                                      mediumDeviceSize="4"
+                                      mediumDeviceSize="2"
                                       class="slds-p-bottom_small slds-p-right_small">
                     <c:SA_Artist id="{!artist.id}"
                                 image="{!artist.imageURL}"

@@ -1,5 +1,6 @@
 ({
     handleSearch: function(component, trackId) {
+        let showSpinner = $A.get("e.c:EV_SpinnerShow").fire();
         let actionTrack = component.get("c.getTrackDetails");
         actionTrack.setParams({
             trackId: trackId
@@ -12,15 +13,8 @@
             });
             event.fire();
             console.log(response.getReturnValue());
+            let hideSpinner = $A.get("e.c:EV_SpinnerHide").fire();
         });
         $A.enqueueAction(actionTrack);
-    },
-
-    showSpinner: function(component) {
-        component.find('spinner').showSpinner();
-     },
-
-    hideSpinner: function(component) {
-        component.find('spinner').hideSpinner();
     }
 })

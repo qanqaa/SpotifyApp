@@ -8,6 +8,7 @@
         if(trackList){
             if(trackList.length > 0) {
                 component.set('v.showTrackResults', true);
+                component.set('v.showSearchResults', true);
             }
             else {
                 component.set('v.showTrackResults', false);
@@ -20,6 +21,7 @@
         if(artistList){
             if(artistList.length > 0) {
                 component.set('v.showArtistResults', true);
+                component.set('v.showSearchResults', true);
             }
             else {
                 component.set('v.showArtistResults', false);
@@ -32,6 +34,8 @@
          if(trackDetails){
              component.set('v.showTrackDetails', true);
              component.set('v.showArtistDetails', false);
+             component.set('v.showTrackResults', false);
+             component.set('v.showArtistResults', false);
          }
          else {
              component.set('v.showTrackDetails', false);
@@ -43,6 +47,8 @@
          if(artistDetails){
              component.set('v.showArtistDetails', true);
              component.set('v.showTrackDetails', false);
+             component.set('v.showTrackResults', false);
+             component.set('v.showArtistResults', false);
          }
          else {
              component.set('v.showArtistDetails', false);

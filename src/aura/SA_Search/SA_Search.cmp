@@ -2,6 +2,8 @@
                 implements="force:appHostable,flexipage:availableForAllPageTypes">
     <aura:registerEvent name="tracksLoaded" type="c:EV_TracksLoaded"/>
     <aura:registerEvent name="artistsLoaded" type="c:EV_Art"/>
+    <aura:registerEvent name="showSpinner" type="c:EV_SpinnerShow"/>
+    <aura:registerEvent name="hideSpinner" type="c:EV_SpinnerHide"/>
 
     <aura:attribute name="searchTerm" type="String"/>
 
@@ -22,6 +24,5 @@
                     onclick="{!c.onSearchClick}"/>
         </div>
     </lightning:card>
-    <c:Spinner aura:id='spinner'/>
 </aura:component>
 

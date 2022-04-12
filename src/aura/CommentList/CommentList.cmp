@@ -1,0 +1,20 @@
+<aura:component description="CommentList" controller="CommentSectionController">
+
+    <aura:attribute name="objectId" type="String[]"/>
+    <aura:attribute name="propertiesInfo" type="Spotify_Property__c[]"/>
+
+    <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
+
+    <lightning:card>
+            <lightning:layout horizontalAlign="space" multipleRows="true">
+                <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
+                    <aura:iteration items="{!v.propertiesInfo}" var="proInf">
+                        <c:Comment commentText="{!proInf.Comment__c}"
+                                   rate="{!proInf.Rating__c}"
+                                   commentAuthor="{!proInf.Owner.Name}"
+                                   commentDate="{!proInf.LastModifiedDate}"/>
+                    </aura:iteration>
+                </lightning:layoutItem>
+            </lightning:layout>
+    </lightning:card>
+</aura:component>
