@@ -7,7 +7,6 @@
     <aura:attribute name="objectId" type="String"/>
 
     <lightning:card>
-            <div class="slds-text-heading_large slds-p-left_medium">Comments Section</div>
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
                     <c:CommentList objectId="{!v.objectId}"/>

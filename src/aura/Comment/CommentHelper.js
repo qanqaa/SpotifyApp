@@ -1,30 +1,30 @@
 ({
-    saveComment: function(component, event, commentText, rate, objectId) {
+    deleteComment: function(component, event, propId) {
         let showSpinner = $A.get("e.c:EV_SpinnerShow").fire();
-        let actionComment = component.get("c.addComment");
+        let actionComment = component.get("c.delComment");
+        console.log('propId' + propId);
         actionComment.setParams({
-            commentText: commentText,
-            rate: rate,
-            objectId: objectId
+            propId: propId
         });
         actionComment.setCallback(this, $A.getCallback(function(response) {
             let toastType;
+            console.log('jaki getstate przy usuwaniu?' + response.getState())
             if(response.getState() == 'SUCCESS'){
+                console.log('wchodzi do success');
                 toastType = 'success';
-                let commentAddedEvent = $A.get("e.c:EV_CommentAdded");
-                console.log(commentAddedEvent);
+                let commentDeletedEvent = $A.get("e.c:CommentDeletedEVENT");
+                console.log(commentDeletedEvent);
                 console.log('ODPALA COMMENT ADDED EVENT?');
-                commentAddedEvent.fire();
+                commentDeletedEvent.fire();
                 console.log('ODPALA COMMENT ADDED EVENT');
             }
             else{
+            console.log('wchodzi do false');
                 toastType = 'error';
             }
             this.showToast(component, toastType, response.getState(), response.getReturnValue());
             console.log(response.getReturnValue());
             console.log(response.getState());
-            component.set('v.commentText', '');
-            component.set('v.rate', 0);
             let hideSpinner = $A.get("e.c:EV_SpinnerHide").fire();
         }));
         $A.enqueueAction(actionComment);

@@ -69,7 +69,7 @@
                     </lightning:layout>
                 </lightning:layoutItem>
                 <lightning:layoutItem size="6">
-                    <c:CommentSection objectId="{!v.artist.spotifyId}"/>
+                    <c:CommentSection objectId="{!if(v.artist.id.length > 0, v.artist.id, v.artist.spotifyId)}"/>
                 </lightning:layoutItem>
             </lightning:layout>
         </lightning:card>

@@ -1,19 +1,33 @@
 <aura:component description="CommentList" controller="CommentSectionController">
 
-    <aura:attribute name="objectId" type="String[]"/>
+    <aura:attribute name="objectId" type="String"/>
     <aura:attribute name="propertiesInfo" type="Spotify_Property__c[]"/>
 
     <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
+    <aura:handler event="c:EV_CommentAdded" action="{!c.onValueChange}"/>
+    <aura:handler event="c:CommentDeletedEVENT" action="{!c.onValueChange}"/>
 
     <lightning:card>
+        <div class="slds-text-heading_large slds-p-left_medium">Comments</div>
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-                    <aura:iteration items="{!v.propertiesInfo}" var="proInf">
-                        <c:Comment commentText="{!proInf.Comment__c}"
-                                   rate="{!proInf.Rating__c}"
-                                   commentAuthor="{!proInf.Owner.Name}"
-                                   commentDate="{!proInf.LastModifiedDate}"/>
-                    </aura:iteration>
+                    <aura:if isTrue="{! !empty(v.propertiesInfo)}">
+                        <aura:iteration items="{!v.propertiesInfo}" var="proInf">
+                            <aura:if isTrue="{! or(not(empty(proInf.Comment__c)), proInf.Rating__c>0)}">
+                                <c:Comment  propId="{!proInf.Id}"
+                                            objectId="{!proInf.ObjectId__c}"
+                                            commentText="{!proInf.Comment__c}"
+                                            rate="{!proInf.Rating__c}"
+                                            commentAuthor="{!proInf.Owner.Name}"
+                                            commentDate="{!proInf.LastModifiedDate}"/>
+                            </aura:if>
+                        </aura:iteration>
+                        <aura:set attribute="else">
+
+                                No comments found
+
+                        </aura:set>
+                    </aura:if>
                 </lightning:layoutItem>
             </lightning:layout>
     </lightning:card>

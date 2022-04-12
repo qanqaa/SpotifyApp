@@ -9,18 +9,39 @@
         });
         console.log('objectId' + objectId);
         actionComment.setCallback(this, $A.getCallback(function(response) {
-           /* let eventSPL = $A.get("e.c:EV_SpotifyPropertiesLoaded");
-            eventSPL.setParam({
-                "spotProp": response.getReturnValue()
-            });
-            eventSPL.fire();
-            console.log(response.getReturnValue());*/
-
             let state = response.getState();
             switch(state){
                 case "SUCCESS":
                     let propertiesInfo = response.getReturnValue();
                     component.set("v.propertiesInfo", propertiesInfo);
+
+                    var commentsToDisplay = [];
+                    let isUserCommentExist = false;
+                    console.log('PRZED');
+                    var userId = $A.get("$SObjectType.CurrentUser.Id");
+                    console.log(userId);
+                    console.log(propertiesInfo.length);
+
+
+                    for(let i = 0; i < propertiesInfo.length; i++){
+                        if(propertiesInfo[i].Comment_c != '' || propertiesInfo[i].Rating__c != ''){
+                                                console.log('WCHODZI W PĘTLE');
+
+                            commentsToDisplay.push(propertiesInfo[i]);
+                            /*console.log('propertiesInfo[i] ' + propertiesInfo[i]);
+                            console.log('userId ' + userId);
+                            if(propertiesInfo[i].OwnerId == userId){
+                                let showCommentInput = $A.get("e.c:EV_ShowCommentInput");
+                                showCommentInput.setParams({
+                                    "showInputComment": response.getReturnValue()
+                                });
+                                showCommentInput.fire();
+                                console.log(response.getReturnValue());
+                            }
+                            console.log('dodaje');*/
+                        }
+                    }
+                    component.set("v.propertiesInfo", commentsToDisplay);
                     console.log('UDALO SIEEEEEE' + response.getReturnValue());
                     break;
 
