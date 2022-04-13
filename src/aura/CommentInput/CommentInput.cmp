@@ -6,7 +6,7 @@
     <aura:attribute name="commentText" type="String"/>
     <aura:attribute name="rate" type="Integer" default="1"/>
     <aura:attribute name="objectId" type="String"/>
-    <aura:attribute name="showInputComment" type="Boolean"/>
+    <aura:attribute name="objectOwnerProperty" type="Object"/>
 
     <lightning:notificationsLibrary aura:id="notifLib"/>
 

@@ -13,18 +13,15 @@
                 toastType = 'success';
                 let commentAddedEvent = $A.get("e.c:EV_CommentAdded");
                 console.log(commentAddedEvent);
-                console.log('ODPALA COMMENT ADDED EVENT?');
                 commentAddedEvent.fire();
-                console.log('ODPALA COMMENT ADDED EVENT');
+
             }
             else{
                 toastType = 'error';
             }
             this.showToast(component, toastType, response.getState(), response.getReturnValue());
-            console.log(response.getReturnValue());
-            console.log(response.getState());
             component.set('v.commentText', '');
-            component.set('v.rate', 0);
+            component.set('v.rate', 1);
             let hideSpinner = $A.get("e.c:EV_SpinnerHide").fire();
         }));
         $A.enqueueAction(actionComment);

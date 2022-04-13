@@ -17,7 +17,7 @@
         if (component.ratingObj) {
             let value = component.get('v.value');
             console.log('>>>>>>>>>>>>>>>>>>>>>>v.value' + value);
-            component.ratingObj.setRating(value,true);
+            component.ratingObj.setRating(value,false);
         }
     }
 })

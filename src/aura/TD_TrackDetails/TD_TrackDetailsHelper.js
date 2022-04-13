@@ -19,6 +19,7 @@
         console.log('objectProperties' + objectProperties);
         console.log('objectProperties0 ' + objectProperties[0].OwnerId);
         if(objectProperties){
+            component.set('v.objectProperties', objectProperties);
             for(let i = 0; i < objectProperties.length; i++){
                 if(objectProperties[i].OwnerId == userId){
                     component.set('v.objectOwnerProp', objectProperties[i]);
@@ -26,9 +27,6 @@
                     break;
                 }
             }
-        }
-        else {
-             component.set('v.showComments', false);
         }
     },
 

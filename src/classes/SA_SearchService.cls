@@ -126,7 +126,7 @@ public with sharing class SA_SearchService {
     }
 
     public static String createTrackDetailsQuery(String id) {
-        String searchQuery = 'SELECT Id, SpotifyId__c, AlbumReleaseDate__c, AlbumName__c, Name, Duration__c, ImageURL__c, ArtistName__c  ' +
+        String searchQuery = 'SELECT Id, AlbumReleaseDate__c, AlbumName__c, Name, Duration__c, ImageURL__c, ArtistName__c  ' +
                 'FROM Track__c WHERE Id = :id';
         System.debug(searchQuery);
         return searchQuery;
@@ -139,7 +139,7 @@ public with sharing class SA_SearchService {
     }
 
     public static String createArtistDetailsQuery(String id) {
-        String searchQuery = 'SELECT Id, Name, ImageURL__c, Genre__c, Popularity__c, Followers__c, SpotifyId__c ' +
+        String searchQuery = 'SELECT Id, Name, ImageURL__c, Genre__c, Popularity__c, Followers__c ' +
                 'FROM Artist__c WHERE Id = :id';
         System.debug(searchQuery);
         return searchQuery;

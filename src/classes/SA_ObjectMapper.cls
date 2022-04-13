@@ -4,9 +4,9 @@ public with sharing class SA_ObjectMapper {
         TrackDTO trackDTO = new TrackDTO();
         try {
             trackDTO.id = track.Id;
-            if(track.SpotifyId__c != null){
-                trackDTO.spotifyId = track.SpotifyId__c;
-            }
+//            if(track.SpotifyId__c != null){
+//                trackDTO.spotifyId = track.SpotifyId__c;
+//            }
             trackDTO.name = track.Name;
             trackDTO.imageURL = track.ImageURL__c;
             trackDTO.duration = Integer.valueOf(track.Duration__c);
@@ -36,7 +36,7 @@ public with sharing class SA_ObjectMapper {
         ArtistDTO artistDTO = new ArtistDTO();
         try {
             artistDTO.id = artist.Id;
-            artistDTO.spotifyId = artist.SpotifyId__c;
+//            artistDTO.spotifyId = artist.SpotifyId__c;
             artistDTO.name = artist.Name;
             artistDTO.imageURL = artist.ImageURL__c;
             artistDTO.followers = Integer.valueOf(artist.Followers__c);

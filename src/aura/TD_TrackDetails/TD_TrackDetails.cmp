@@ -9,10 +9,9 @@
     <aura:handler event="c:EV_SpotifyPropertiesLoaded" action="{!c.onSpotifyPropertiesLoaded}"/>
 
     <aura:attribute name="showDetails" type="Boolean" default="false"/>
-    <aura:attribute name="showComments" type="Boolean" default="false"/>
 
     <aura:attribute name="track" type="TrackDTO"/>
-    <aura:attribute name="objectProperties" type="Spotify_Property__c[]"/>
+    <aura:attribute name="objectProperties" type="Object[]"/>
     <aura:attribute name="objectOwnerProp" type="Object"/>
 
     <aura:attribute name="durationString" type="String"/>
@@ -76,7 +75,9 @@
                                           mediumDeviceSize="12"
                                           padding="around-small">
                         <c:LikeDislikeButtons item = "{!v.objectOwnerProp}"/>
-                        <c:CommentSection objectId="{!if(v.track.id.length > 0 , v.track.id, v.track.spotifyId)}"/>
+                        <c:CommentSection objectId="{!if(v.track.id.length > 0 , v.track.id, v.track.spotifyId)}"
+                                          objectProperties = "{!v.objectProperties}"
+                                          objectOwnerProperty = "{!v.objectOwnerProp}"/>
                     </lightning:layoutItem>
             </lightning:layout>
         </lightning:card>

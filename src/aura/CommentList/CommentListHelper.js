@@ -13,17 +13,13 @@
                     component.set("v.propertiesInfo", propertiesInfo);
 
                     var commentsToDisplay = [];
-                    let isUserCommentExist = false;
                     var userId = $A.get("$SObjectType.CurrentUser.Id");
-                    console.log(userId);
-                    console.log(propertiesInfo.length);
-
 
                     for(let i = 0; i < propertiesInfo.length; i++){
-                        if(!propertiesInfo[i].Rating__c){
+                        if(isEmpty(propertiesInfo[i].Rating__c)){
                             propertiesInfo[i].Rating__c = 0;
                         }
-                        if(propertiesInfo[i].Comment_c != '' || propertiesInfo[i].Rating__c != ''){
+                        if(!isEmpty(propertiesInfo[i].Comment_c) || !isEmpty(propertiesInfo[i].Rating__c) || propertiesInfo[i].Rating__c>0){
                             commentsToDisplay.push(propertiesInfo[i]);
                         }
                     }
