@@ -13,13 +13,28 @@
 
     <lightning:card>
         <div class="slds-p-around_medium"
-             style="height:240px; width:200px; cursor:pointer; background-color:#f5f5f5;"
-             onclick="{!c.onArtistClick}">
-            <img class="slds-align_absolute-center" src="{!v.image}" style="width:150px; height:150px;"/>
-            <output class="slds-align_absolute-center slds-text-title_bold"
+             aura:id = "trackOver"
+             onclick="{!c.onArtistClick}"
+             onmouseover="{!c.onMouseOver}"
+             onmouseout="{!c.onMouseOut}"
+             style="height:200px; width:150px; cursor:pointer; border-radius:5%;">
+            <img class="slds-align_absolute-center" src="{!v.image}" style="width:100px; height:100px; border-radius:50%;"/>
+            <output class="slds-p-top_small slds-align_absolute-center slds-text-title_bold"
                     value="{!v.title}"></output>
             <output class="slds-align_absolute-center"
                     value="{!v.genre}"></output>
         </div>
+
+<!--            <div style="display: inline-block; max-width:30%">-->
+<!--                <img class="slds-align-top" src="{!v.image}" style="width:100px; height:100px; border-radius:5%;"/>-->
+<!--            </div>-->
+<!--            <div class="slds-p-left_medium slds-align-top" style="display: inline-block; max-width:70%">-->
+<!--                <output class=" slds-p-top_medium slds-align-top slds-text-title_bold"-->
+<!--                        value="{!v.title}"></output>-->
+<!--                <br/>-->
+<!--                <output class=" slds-align-top"-->
+<!--                        value="{!v.artistName}"></output>-->
+<!--            </div>-->
+<!--        </div>-->
     </lightning:card>
 </aura:component>

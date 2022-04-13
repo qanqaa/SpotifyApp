@@ -3,6 +3,7 @@
     <aura:attribute name="objectId" type="String"/>
     <aura:attribute name="propertiesInfo" type="Spotify_Property__c[]"/>
 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
     <aura:handler event="c:EV_CommentAdded" action="{!c.onValueChange}"/>
     <aura:handler event="c:CommentDeletedEVENT" action="{!c.onValueChange}"/>
@@ -11,7 +12,7 @@
         <div class="slds-text-heading_large slds-p-left_medium">Comments</div>
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-                    <aura:if isTrue="{! !empty(v.propertiesInfo)}">
+                    <aura:renderIf isTrue="{! !empty(v.propertiesInfo)}">
                         <aura:iteration items="{!v.propertiesInfo}" var="proInf">
                             <aura:if isTrue="{! or(not(empty(proInf.Comment__c)), proInf.Rating__c>0)}">
                                 <c:Comment  propId="{!proInf.Id}"
@@ -27,7 +28,7 @@
                                 No comments found
 
                         </aura:set>
-                    </aura:if>
+                    </aura:renderIf>
                 </lightning:layoutItem>
             </lightning:layout>
     </lightning:card>

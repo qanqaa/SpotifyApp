@@ -12,7 +12,7 @@
     <aura:attribute name="durationString" type="String"/>
 
     <aura:if isTrue="{!v.showDetails}">
-        <lightning:card>
+        <lightning:card title="Track details" iconName="utility:play">
             <lightning:layout multipleRows="true">
                 <lightning:layoutItem size="12"
                                       mediumDeviceSize="3"

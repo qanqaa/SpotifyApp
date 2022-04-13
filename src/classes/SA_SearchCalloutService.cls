@@ -2,7 +2,7 @@ public with sharing class SA_SearchCalloutService {
 
     public static List<TrackDTO> getTracksFromSpotify(String searchTerm) {
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:SpotifyAPI/v1/search?' + createEndpointQuery(searchTerm) + '&type=track&limit=20');
+        request.setEndpoint('callout:SpotifyAPI/v1/search?' + createEndpointQuery(searchTerm) + '&type=track&limit=40');
         request.setMethod('GET');
         Http http = new Http();
         HTTPResponse response = http.send(request);
@@ -13,7 +13,7 @@ public with sharing class SA_SearchCalloutService {
 
     public static List<ArtistDTO> getArtistsFromSpotify(String searchTerm) {
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:SpotifyAPI/v1/search?' + createEndpointQuery(searchTerm) + '&type=artist&limit=20');
+        request.setEndpoint('callout:SpotifyAPI/v1/search?' + createEndpointQuery(searchTerm) + '&type=artist&limit=40');
         request.setMethod('GET');
         Http http = new Http();
         HTTPResponse response = http.send(request);

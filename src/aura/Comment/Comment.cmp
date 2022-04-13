@@ -3,7 +3,7 @@
     <aura:attribute name="propId" type="String"/>
     <aura:attribute name="objectId" type="String"/>
     <aura:attribute name="commentText" type="String"/>
-    <aura:attribute name="rate" type="Integer"/>
+    <aura:attribute name="rate" type="Integer" default="1"/>
     <aura:attribute name="commentAuthor" type="String"/>
     <aura:attribute name="commentDate" type="String"/>
 
@@ -12,7 +12,9 @@
     <aura:renderIf isTrue="{!or(v.commentText.length>0, rate>0) }">
         <lightning:layout class="slds-m-around_small" multipleRows="true">
             <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-            {!v.commentAuthor}
+                <lightning:formattedText value="{!v.commentAuthor}"/>
+                <lightning:formattedDateTime value="{!v.commentDate}" hour="numeric"
+                                             minute="numeric" second="numeric"/>
                 <lightning:button variant="destructive" label="Delete" onclick="{!c.deleteComment}"/>
             </lightning:layoutItem>
 

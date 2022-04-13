@@ -12,7 +12,7 @@
     <aura:attribute name="track" type="Object"/>
 
     <aura:renderIf isTrue="{!v.showSearchResults}">
-        <lightning:card>
+        <lightning:card title="Results" iconName="utility:chevronright">
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <aura:renderIf isTrue="{!v.showTrackDetails}">
                     <lightning:layoutItem size="12"
@@ -28,15 +28,15 @@
                 </aura:renderIf>
 
                 <aura:renderIf isTrue="{!v.showTrackResults}">
-                    <lightning:layoutItem size="12"
-                                          mediumDeviceSize="12"
+                    <lightning:layoutItem size="6"
+                                          mediumDeviceSize="6"
                                           padding="around-small">
                         <c:SA_TrackResults/>
                     </lightning:layoutItem>
                 </aura:renderIf>
                 <aura:renderIf isTrue="{!v.showArtistResults}">
-                    <lightning:layoutItem size="12"
-                                          mediumDeviceSize="12"
+                    <lightning:layoutItem size="6"
+                                          mediumDeviceSize="6"
                                           padding="around-small">
                         <c:SA_ArtistResults/>
                     </lightning:layoutItem>

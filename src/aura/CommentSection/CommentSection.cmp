@@ -5,6 +5,7 @@
     <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
 
     <aura:attribute name="objectId" type="String"/>
+    <aura:attribute name="showInput" type="Boolean" default="true"/>
 
     <lightning:card>
             <lightning:layout horizontalAlign="space" multipleRows="true">
@@ -12,7 +13,8 @@
                     <c:CommentList objectId="{!v.objectId}"/>
                 </lightning:layoutItem>
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-                    <c:CommentInput objectId="{!v.objectId}"/>
+                    <c:CommentInput showInputComment="{!v.showInput}"
+                                    objectId="{!v.objectId}"/>
                 </lightning:layoutItem>
             </lightning:layout>
     </lightning:card>

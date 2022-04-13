@@ -1,18 +1,16 @@
 <aura:component description="CommentInput" controller="CommentSectionController">
 
-    <aura:handler event="c:EV_ShowCommentInput" action="{!c.showCommentInput}"/>
-
+    <aura:handler event="c:EV_SpotifyPropertiesLoaded" action="{!c.showCommentInput}"/>
     <aura:registerEvent name="commentAddedSuccessfully" type="c:EV_CommentAdded"/>
 
     <aura:attribute name="commentText" type="String"/>
-    <aura:attribute name="rate" type="Integer" default="5"/>
+    <aura:attribute name="rate" type="Integer" default="1"/>
     <aura:attribute name="objectId" type="String"/>
-    <aura:attribute name="showInputField" type="Boolean" default="false"/>
+    <aura:attribute name="showInputComment" type="Boolean"/>
 
     <lightning:notificationsLibrary aura:id="notifLib"/>
 
         <lightning:layout class="slds-m-around_small" multipleRows="true">
-
             <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
                 <c:FiveStarRating aura:id="starRate" value="{!v.rate}" readonly="false"/>
             </lightning:layoutItem>
@@ -23,11 +21,11 @@
                                          disabledCategories="FORMAT_FONT"
                                          label="Add comment to your rating"
                                          labelVisible="true"/>
-
             </lightning:layoutItem>
 
             <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
                 <lightning:button variant="brand" label="Submit" onclick="{!c.saveComment}"/>
             </lightning:layoutItem>
         </lightning:layout>
+
 </aura:component>

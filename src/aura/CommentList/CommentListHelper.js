@@ -28,20 +28,10 @@
                                                 console.log('WCHODZI W PĘTLE');
 
                             commentsToDisplay.push(propertiesInfo[i]);
-                            /*console.log('propertiesInfo[i] ' + propertiesInfo[i]);
-                            console.log('userId ' + userId);
-                            if(propertiesInfo[i].OwnerId == userId){
-                                let showCommentInput = $A.get("e.c:EV_ShowCommentInput");
-                                showCommentInput.setParams({
-                                    "showInputComment": response.getReturnValue()
-                                });
-                                showCommentInput.fire();
-                                console.log(response.getReturnValue());
-                            }
-                            console.log('dodaje');*/
                         }
                     }
-                    component.set("v.propertiesInfo", commentsToDisplay);
+
+                    component.set("v.propertiesInfo", propertiesInfo);
                     console.log('UDALO SIEEEEEE' + response.getReturnValue());
                     break;
 

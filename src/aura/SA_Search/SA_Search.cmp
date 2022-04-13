@@ -7,7 +7,7 @@
 
     <aura:attribute name="searchTerm" type="String"/>
 
-    <lightning:card title="Search" iconName="standard:search">
+    <lightning:card title="Search" iconName="utility:search">
         <div class="slds-form slds-p-bottom_medium slds-size_1-of-1 slds-align_absolute-center" style="display: flex;">
             <lightning:input
                     aura:id="nameInput"

@@ -6,15 +6,22 @@
             objectId: objectId
         });
         console.log('objectId' + objectId);
+
         actionComment.setCallback(this, $A.getCallback(function(response) {
-            let eventSPL = $A.get("e.c:EV_SpotifyPropertiesLoaded");
+            /*let eventSPL = $A.get("e.c:EV_SpotifyPropertiesLoaded");
             eventSPL.setParam({
                 "spotProp": response.getReturnValue()
             });
-            eventSPL.fire();
-            console.log(response.getReturnValue());
-            component.set('v.spotPropInfo', response.getReturnValue());
-            console.log(component.get('v.spotPropInfo'));
+            eventSPL.fire();*/
+            var userId = $A.get("$SObjectType.CurrentUser.Id");
+            Console.log(userId);
+            let str = response.getReturnValue();
+            for(let i = 0; i < str.length; i++){
+                if(str[i].OwnerId == userId){
+                    component.set('v.showInput', false);
+                    break;
+                }
+            }
         }));
         $A.enqueueAction(actionComment);
     },

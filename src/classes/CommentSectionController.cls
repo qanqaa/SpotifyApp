@@ -2,22 +2,56 @@ public with sharing class CommentSectionController {
 
     @AuraEnabled
     public static String addComment(String commentText, Integer rate, String objectId) {
-        Spotify_Property__c newComment = new Spotify_Property__c();
-        newComment.Comment__c = commentText;
-        newComment.Rating__c = rate;
-        newComment.ObjectId__c = objectId;
+//        String currentUserId = UserInfo.getUserId();
+//
+//            Spotify_Property__c existingObjectProperty =
+//                    Database.query(
+//                            'SELECT Id, Rating__c, Comment__c, OwnerId ' +
+//                                    'FROM Spotify_Property__c ' +
+//                                    'WHERE OwnerId = :currentUserId LIMIT 1'
+//                    );
+//            if(rate>0){
+//                existingObjectProperty.Rating__c = rate;
+//            }
+//            if(String.isNotBlank(commentText)){
+//                existingObjectProperty.Comment__c = commentText;
+//            }
+//
+//            System.debug(existingObjectProperty);
+//
+//            Database.SaveResult saveResult = Database.update(existingObjectProperty);
+//            System.debug(string.valueOf(saveResult));
+//
+//            if (saveResult.isSuccess()) {
+//                return 'Successfully updated review.';
+//            } else {
+//                String errorMsg = '';
+//                for (Database.Error err : saveResult.getErrors()) {
+//                    errorMsg += err.getStatusCode() + ': ' + err.getMessage();
+//                }
+//                return 'The following error has occurred while updating review. Error message: ' + errorMsg;
+//            }
 
-        Database.SaveResult saveResult = Database.insert(newComment);
-        System.debug(string.valueOf(saveResult));
-        if (saveResult.isSuccess()) {
-            return 'Successfully added comment.';
-        } else {
-            String errorMsg = '';
-            for (Database.Error err : saveResult.getErrors()) {
-                errorMsg += err.getStatusCode() + ': ' + err.getMessage();
+            Spotify_Property__c newComment = new Spotify_Property__c();
+            newComment.Comment__c = commentText;
+            newComment.Rating__c = rate;
+            newComment.ObjectId__c = objectId;
+
+            Database.SaveResult saveResult = Database.insert(newComment);
+            System.debug(string.valueOf(saveResult));
+            if (saveResult.isSuccess()) {
+                return 'Successfully added review.';
+            } else {
+                String errorMsg = '';
+                for (Database.Error err : saveResult.getErrors()) {
+                    errorMsg += err.getStatusCode() + ': ' + err.getMessage();
+                }
+                return 'The following error has occurred while adding review. Error message: ' + errorMsg;
             }
-            return 'The following error has occurred while adding comment. Error message: ' + errorMsg;
-        }
+
+
+
+
     }
 
     @AuraEnabled
@@ -37,13 +71,13 @@ public with sharing class CommentSectionController {
         System.debug(string.valueOf(saveResult));
 
         if (saveResult.isSuccess()) {
-            return 'Successfully deleted comment.';
+            return 'Successfully deleted review.';
         } else {
             String errorMsg = '';
             for (Database.Error err : saveResult.getErrors()) {
                 errorMsg += err.getStatusCode() + ': ' + err.getMessage();
             }
-            return 'The following error has occurred while deleting comment. Error message: ' + errorMsg;
+            return 'The following error has occurred while deleting review. Error message: ' + errorMsg;
         }
     }
 

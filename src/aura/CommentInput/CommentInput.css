@@ -9,3 +9,7 @@
 .THIS .ql-font-serif {
 	font-family: serif;
 }
+
+.THIS.hide {
+    display: none;
+}

@@ -9,7 +9,7 @@
     <aura:attribute name="topTracks" type="TrackDTO[]"/>
 
     <aura:if isTrue="{!v.showDetails}">
-        <lightning:card>
+        <lightning:card title="Artist details" iconName="utility:user">
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem size="6">
                     <lightning:layout horizontalAlign="space" multipleRows="true">
@@ -53,7 +53,7 @@
                             <br/>
                         </lightning:layoutItem>
                     </lightning:layout>
-                    <div class="slds-text-heading_large slds-p-left_medium">Related tracks</div>
+                    <div class="slds-text-heading_medium slds-p-left_medium">Related tracks</div>
                     <lightning:layout horizontalAlign="space" multipleRows="true">
                         <aura:renderIf isTrue="{!v.showTopTracks}">
                             <aura:iteration items="{!v.topTracks}" var="topTrack">

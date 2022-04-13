@@ -6,8 +6,13 @@
         helper.handleSearch(component, trackId);
     },
 
-    UpdateColor : function(component, event, helper){
+    onMouseOver : function(component, event, helper){
         var track = component.find('trackOver');
-        $A.util.addClass(track,'greyColor');
+        $A.util.addClass(track,'focused');
+    },
+
+    onMouseOut : function(component, event, helper){
+        var track = component.find('trackOver');
+        $A.util.removeClass(track,'focused');
     },
 })
