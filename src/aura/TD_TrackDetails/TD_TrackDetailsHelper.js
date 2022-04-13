@@ -5,10 +5,30 @@
             component.set('v.showDetails', true);
             component.set('v.track', track);
             component.set('v.durationString', this.parseDurationToString(track.duration));
-            component.find('')
         }
         else {
              component.set('v.showDetails', false);
+        }
+    },
+
+    showPropertiesSection: function(component, event) {
+        let objectProperties = event.getParam('spotProp');
+        var userId = $A.get("$SObjectType.CurrentUser.Id");
+
+        console.log('userId' + userId);
+        console.log('objectProperties' + objectProperties);
+        console.log('objectProperties0 ' + objectProperties[0].OwnerId);
+        if(objectProperties){
+            for(let i = 0; i < objectProperties.length; i++){
+                if(objectProperties[i].OwnerId == userId){
+                    component.set('v.objectOwnerProp', objectProperties[i]);
+                    console.log('objectProperties[i]' + objectProperties[i]);
+                    break;
+                }
+            }
+        }
+        else {
+             component.set('v.showComments', false);
         }
     },
 

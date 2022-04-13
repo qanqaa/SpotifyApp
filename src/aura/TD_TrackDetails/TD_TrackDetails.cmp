@@ -6,9 +6,15 @@
     <aura:registerEvent name="hideSpinner" type="c:EV_SpinnerHide"/>
 
     <aura:handler event="c:EV_TrackDetailsLoaded" action="{!c.onTrackDetailsLoaded}"/>
+    <aura:handler event="c:EV_SpotifyPropertiesLoaded" action="{!c.onSpotifyPropertiesLoaded}"/>
 
     <aura:attribute name="showDetails" type="Boolean" default="false"/>
+    <aura:attribute name="showComments" type="Boolean" default="false"/>
+
     <aura:attribute name="track" type="TrackDTO"/>
+    <aura:attribute name="objectProperties" type="Spotify_Property__c[]"/>
+    <aura:attribute name="objectOwnerProp" type="Object"/>
+
     <aura:attribute name="durationString" type="String"/>
 
     <aura:if isTrue="{!v.showDetails}">
@@ -32,12 +38,12 @@
                     </output>
                     <br/>
                     <aura:iteration items="{!v.track.featArtists}" var="featArtist">
-                            <output onclick="{!c.onArtistClick}"
-                                    id="{!if(featArtist.id != null, featArtist.id, featArtist.spotifyId)}"
-                                    style="cursor:pointer;"
-                                    class="slds-text-link_faux"
-                                    value="{!featArtist.name + '   '}">
-                            </output>
+                        <output onclick="{!c.onArtistClick}"
+                                id="{!if(featArtist.id != null, featArtist.id, featArtist.spotifyId)}"
+                                style="cursor:pointer;"
+                                class="slds-text-link_faux"
+                                value="{!featArtist.name + '   '}">
+                        </output>
 
                     </aura:iteration>
                     <br/><br/>
@@ -66,11 +72,12 @@
                     </output>
                     <br/>
                 </lightning:layoutItem>
-                <lightning:layoutItem size="12"
-                                      mediumDeviceSize="12"
-                                      padding="around-small">
-                    <c:CommentSection objectId="{!if(v.track.id.length > 0 , v.track.id, v.track.spotifyId)}"/>
-                </lightning:layoutItem>
+                    <lightning:layoutItem size="12"
+                                          mediumDeviceSize="12"
+                                          padding="around-small">
+                        <c:LikeDislikeButtons item = "{!v.objectOwnerProp}"/>
+                        <c:CommentSection objectId="{!if(v.track.id.length > 0 , v.track.id, v.track.spotifyId)}"/>
+                    </lightning:layoutItem>
             </lightning:layout>
         </lightning:card>
     </aura:if>

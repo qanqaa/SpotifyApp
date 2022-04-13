@@ -2,8 +2,11 @@
                 implements="flexipage:availableForAllPageTypes,force:appHostable"
                 access="global">
     <aura:registerEvent name="trackDetailsLoaded" type="c:EV_TrackDetailsLoaded"/>
+<!--    <aura:registerEvent name="spotifyPropertiesLoaded" type="c:EV_SpotifyPropertiesLoaded"/>-->
     <aura:registerEvent name="showSpinner" type="c:EV_SpinnerShow"/>
     <aura:registerEvent name="hideSpinner" type="c:EV_SpinnerHide"/>
+
+<!--    <aura:handler event="c:EV_TrackDetailsLoaded" action="{!c.loadSpotifyProperties}"/>-->
 
     <aura:attribute name="image" type="String"/>
     <aura:attribute name="title" type="String"/>

@@ -11,4 +11,17 @@ public with sharing class SA_TrackController {
             return SA_SearchCalloutService.getTrackDetailsFromSpotify(trackId);
         }
     }
+
+    @AuraEnabled
+    public static List<Spotify_Property__c> getObjectSpotifyProperties(String objectId) {
+        List<Spotify_Property__c> objectSpotifyProperties =
+                Database.query(
+                        'SELECT Id, ObjectId__c, OwnerId, Owner.Name, CreatedDate, ' +
+                                'Rating__c, Comment__c, isBlack__c, isFavourite__c  ' +
+                                'FROM Spotify_Property__c ' +
+                                'WHERE ObjectId__c = :objectId ' +
+                                'ORDER BY CreatedDate ASC');
+        System.debug(objectSpotifyProperties);
+        return objectSpotifyProperties;
+    }
 }

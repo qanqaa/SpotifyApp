@@ -1,5 +1,7 @@
 <aura:component description="SA_MainBox" implements="flexipage:availableForAllPageTypes">
-        <c:SA_Search/>
-        <c:SA_Results/>
+        <lightning:card>
+                <c:SA_Search/>
+                <c:SA_Results/>
+        </lightning:card>
         <c:Spinner aura:id='spinner'/>
 </aura:component>

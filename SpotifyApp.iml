@@ -289,6 +289,10 @@
                             <option name="name" value="CommentSectionController" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="LikeDislikeController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />
@@ -673,11 +677,15 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="EV_CommentDeleted" />
+                            <option name="name" value="EV_ShowCommentInput" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="EV_ShowCommentInput" />
+                            <option name="name" value="Favourite" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="LikeDislikeButtons" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>

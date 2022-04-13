@@ -3,7 +3,7 @@
     <aura:attribute name="propId" type="String"/>
     <aura:attribute name="objectId" type="String"/>
     <aura:attribute name="commentText" type="String"/>
-    <aura:attribute name="rate" type="Integer" default="1"/>
+    <aura:attribute name="rate" type="Integer" default="0"/>
     <aura:attribute name="commentAuthor" type="String"/>
     <aura:attribute name="commentDate" type="String"/>
 
@@ -18,11 +18,10 @@
                 <lightning:button variant="destructive" label="Delete" onclick="{!c.deleteComment}"/>
             </lightning:layoutItem>
 
-            <aura:renderIf isTrue="{!if(v.rate>0, true, false)}">
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
                     <c:FiveStarRating aura:id="starRate" value="{!v.rate}" readonly="true"/>
                 </lightning:layoutItem>
-            </aura:renderIf>
+
 
             <aura:renderIf isTrue="{!if(v.commentText.length>0, true, false)}">
                 <lightning:layoutItem>

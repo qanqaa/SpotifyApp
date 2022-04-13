@@ -2,12 +2,15 @@
 
     <aura:registerEvent name="spotifyPropertiesLoaded" type="c:EV_SpotifyPropertiesLoaded"/>
 
-    <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
+
+
+        <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
 
     <aura:attribute name="objectId" type="String"/>
     <aura:attribute name="showInput" type="Boolean" default="true"/>
 
-    <lightning:card>
+
+        <lightning:card>
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
                     <c:CommentList objectId="{!v.objectId}"/>
@@ -17,5 +20,6 @@
                                     objectId="{!v.objectId}"/>
                 </lightning:layoutItem>
             </lightning:layout>
-    </lightning:card>
+        </lightning:card>
+
 </aura:component>

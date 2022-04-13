@@ -1,4 +1,18 @@
 ({
+    showTrackDetails: function(component, event) {
+        let track = event.getParam('track');
+        if(track){
+            component.set('v.showDetails', true);
+            component.set('v.track', track);
+            component.set('v.durationString', this.parseDurationToString(track.duration));
+            component.find('')
+        }
+        else {
+             component.set('v.showDetails', false);
+        }
+    },
+
+
     getComments: function(component, event, objectId) {
         console.log('hellomdf');
         let actionComment = component.get("c.getObjectSpotifyProperties");

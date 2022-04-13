@@ -10,12 +10,14 @@
         }
 
         component.ratingObj = rating(domEl, currentRating, maxRating, callback, readOnly);
+        console.log('>>>>>>>>>>>>>>>>> ZAŁADOWAŁO SIĘ');
     },
 
     onValueChange: function(component,event,helper) {
         if (component.ratingObj) {
             let value = component.get('v.value');
-            component.ratingObj.setRating(value,false);
+            console.log('>>>>>>>>>>>>>>>>>>>>>>v.value' + value);
+            component.ratingObj.setRating(value,true);
         }
     }
 })
