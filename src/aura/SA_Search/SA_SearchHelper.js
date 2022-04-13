@@ -13,7 +13,7 @@
                 "tracks": response.getReturnValue()
             });
             event.fire();
-            console.log(response.getReturnValue());
+            console.log('zwraca coś' + response.getReturnValue());
         }));
         $A.enqueueAction(actionTrack);
 

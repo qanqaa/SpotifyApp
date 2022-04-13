@@ -12,7 +12,7 @@
         <div class="slds-text-heading_large slds-p-left_medium">Comments</div>
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-                    <aura:renderIf isTrue="{! !empty(v.propertiesInfo)}">
+                    <aura:if isTrue="{! !empty(v.propertiesInfo)}">
                         <aura:iteration items="{!v.propertiesInfo}" var="proInf">
                             <aura:if isTrue="{! or(not(empty(proInf.Comment__c)), proInf.Rating__c>0)}">
                                 <c:Comment  propId="{!proInf.Id}"
@@ -28,7 +28,7 @@
                                 No comments found
 
                         </aura:set>
-                    </aura:renderIf>
+                    </aura:if>
                 </lightning:layoutItem>
             </lightning:layout>
     </lightning:card>

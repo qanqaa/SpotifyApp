@@ -5,7 +5,7 @@
     <aura:registerEvent name="showSpinner" type="c:EV_SpinnerShow"/>
     <aura:registerEvent name="hideSpinner" type="c:EV_SpinnerHide"/>
 
-    <aura:handler event="c:EV_TrackDetailsLoaded" action="{!c.onTrackDetailsLoaded}"/>
+<!--    <aura:handler event="c:EV_TrackDetailsLoaded" action="{!c.onTrackDetailsLoaded}"/>-->
     <aura:handler event="c:EV_SpotifyPropertiesLoaded" action="{!c.onSpotifyPropertiesLoaded}"/>
 
     <aura:attribute name="showDetails" type="Boolean" default="false"/>
@@ -17,7 +17,7 @@
 
     <aura:attribute name="durationString" type="String"/>
 
-    <aura:if isTrue="{!v.showDetails}">
+<!--    <aura:if isTrue="{!v.showDetails}">-->
         <lightning:card title="Track details" iconName="utility:play">
             <lightning:layout multipleRows="true">
                 <lightning:layoutItem size="12"
@@ -80,5 +80,5 @@
                     </lightning:layoutItem>
             </lightning:layout>
         </lightning:card>
-    </aura:if>
+<!--    </aura:if>-->
 </aura:component>

@@ -14,7 +14,6 @@
 
 
     getComments: function(component, event, objectId) {
-        console.log('hellomdf');
         let actionComment = component.get("c.getObjectSpotifyProperties");
         actionComment.setParams({
             objectId: objectId

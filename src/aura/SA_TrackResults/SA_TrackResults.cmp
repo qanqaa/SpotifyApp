@@ -1,13 +1,10 @@
 <aura:component description="SA_TrackResults">
-    <aura:handler event="c:EV_TracksLoaded" action="{!c.onTracksLoaded}"/>
-
-    <aura:attribute name="showResults" type="Boolean" default="false"/>
-    <aura:attribute name="allTracks" type="Object[]"/>
+    <aura:attribute name="tracks" type="Object[]"/>
 
     <lightning:card title="Tracks" iconName="utility:play">
         <lightning:layout multipleRows="true">
-<!--            <aura:if isTrue="{!v.showResults}">-->
-                <aura:iteration items="{!v.allTracks}" var="track">
+            <aura:if isTrue="{!v.tracks.length > 0}">
+                <aura:iteration items="{!v.tracks}" var="track">
                     <lightning:layoutItem size="12"
                                           mediumDeviceSize="6"
                                           class="slds-p-bottom_small slds-p-right_small">
@@ -17,13 +14,13 @@
                                     artistName="{!track.featArtists[0].name}"/>
                     </lightning:layoutItem>
                 </aura:iteration>
-<!--                <aura:set attribute="else">-->
-<!--                    <div class="slds-align_absolute-center"-->
-<!--                         style="height:5rem">-->
-<!--                        No track records found-->
-<!--                    </div>-->
-<!--                </aura:set>-->
-<!--            </aura:if>-->
+                <aura:set attribute="else">
+                    <div class="slds-align_absolute-center"
+                         style="height:5rem">
+                        No track records found
+                    </div>
+                </aura:set>
+            </aura:if>
         </lightning:layout>
     </lightning:card>
 

@@ -21,6 +21,6 @@
         console.log('objectId' + objectId);
         helper.saveComment(component, event, commentText, rate, objectId);
         console.log('CO SIE DZIEJE?');
-        component.set('v.rate', 1);
+        component.set('v.rate', 0);
     }
 });

@@ -24,17 +24,5 @@
             <output class="slds-align_absolute-center"
                     value="{!v.genre}"></output>
         </div>
-
-<!--            <div style="display: inline-block; max-width:30%">-->
-<!--                <img class="slds-align-top" src="{!v.image}" style="width:100px; height:100px; border-radius:5%;"/>-->
-<!--            </div>-->
-<!--            <div class="slds-p-left_medium slds-align-top" style="display: inline-block; max-width:70%">-->
-<!--                <output class=" slds-p-top_medium slds-align-top slds-text-title_bold"-->
-<!--                        value="{!v.title}"></output>-->
-<!--                <br/>-->
-<!--                <output class=" slds-align-top"-->
-<!--                        value="{!v.artistName}"></output>-->
-<!--            </div>-->
-<!--        </div>-->
     </lightning:card>
 </aura:component>

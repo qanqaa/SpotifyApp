@@ -1,5 +1,5 @@
 ({
-    showTrackDetails: function(component, event) {
+    /*showTrackDetails: function(component, event) {
         let track = event.getParam('track');
         if(track){
             component.set('v.showDetails', true);
@@ -9,7 +9,7 @@
         else {
              component.set('v.showDetails', false);
         }
-    },
+    },*/
 
     showPropertiesSection: function(component, event) {
         let objectProperties = event.getParam('spotProp');

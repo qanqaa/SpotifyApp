@@ -1,13 +1,13 @@
 <aura:component description="SA_ArtistResults">
-    <aura:handler event="c:EV_ArtLoaded" action="{!c.onArtistsLoaded}"/>
+<!--    <aura:handler event="c:EV_ArtLoaded" action="{!c.onArtistsLoaded}"/>-->
 
-    <aura:attribute name="showResults" type="Boolean" default="false"/>
-    <aura:attribute name="allArtists" type="Object[]"/>
+<!--    <aura:attribute name="showResults" type="Boolean" default="false"/>-->
+    <aura:attribute name="artists" type="Object[]"/>
 
     <lightning:card title="Artists" iconName="utility:people">
         <lightning:layout multipleRows="true">
-            <aura:if isTrue="{!v.showResults}">
-                <aura:iteration items="{!v.allArtists}" var="artist">
+            <aura:if isTrue="{!v.artists.length > 0}">
+                <aura:iteration items="{!v.artists}" var="artist">
                     <lightning:layoutItem size="12"
                                           mediumDeviceSize="4"
                                           class="slds-p-bottom_small slds-p-right_small">

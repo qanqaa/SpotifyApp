@@ -1,5 +1,5 @@
 ({
-    showArtistDetails: function(component, event) {
+    /*showArtistDetails: function(component, event) {
         let artist = event.getParam('artist');
         if(artist){
             component.set('v.showDetails', true);
@@ -8,7 +8,7 @@
         else {
              component.set('v.showDetails', false);
         }
-    },
+    },*/
 
     showArtistTopTracks: function(component, event) {
         let topTracks = event.getParam('topTracks');

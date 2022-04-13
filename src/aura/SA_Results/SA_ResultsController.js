@@ -18,4 +18,5 @@
     onArtistDetailsLoaded: function(component, event, helper) {
         helper.showArtistDetails(component, event);
     },
+
 })

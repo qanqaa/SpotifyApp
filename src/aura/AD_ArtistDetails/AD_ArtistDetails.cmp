@@ -1,14 +1,13 @@
 <aura:component description="AD_ArtistDetails" controller="SA_ArtistController"
                 implements="force:appHostable,flexipage:availableForAllPageTypes">
-    <aura:handler event="c:EV_ArtDetLoaded" action="{!c.onArtistDetailsLoaded}"/>
+<!--    <aura:handler event="c:EV_ArtDetLoaded" action="{!c.onArtistDetailsLoaded}"/>-->
     <aura:handler event="c:EV_ArtistTopTracksLoaded" action="{!c.onArtistTopTracksLoaded}"/>
 
-    <aura:attribute name="showDetails" type="Boolean" default="false"/>
+<!--    <aura:attribute name="showDetails" type="Boolean" default="false"/>-->
     <aura:attribute name="showTopTracks" type="Boolean" default="false"/>
     <aura:attribute name="artist" type="ArtistDTO"/>
     <aura:attribute name="topTracks" type="TrackDTO[]"/>
 
-    <aura:if isTrue="{!v.showDetails}">
         <lightning:card title="Artist details" iconName="utility:user">
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem size="6">
@@ -55,7 +54,7 @@
                     </lightning:layout>
                     <div class="slds-text-heading_medium slds-p-left_medium">Related tracks</div>
                     <lightning:layout horizontalAlign="space" multipleRows="true">
-                        <aura:renderIf isTrue="{!v.showTopTracks}">
+                        <aura:if isTrue="{!v.showTopTracks}">
                             <aura:iteration items="{!v.topTracks}" var="topTrack">
                                 <lightning:layoutItem
                                         class="slds-p-bottom_small slds-p-right_small slds-size_1-of-5">
@@ -65,7 +64,7 @@
                                                 artistName="{!topTrack.featArtists[0].name}"/>
                                 </lightning:layoutItem>
                             </aura:iteration>
-                        </aura:renderIf>
+                        </aura:if>
                     </lightning:layout>
                 </lightning:layoutItem>
                 <lightning:layoutItem size="6">
@@ -73,5 +72,4 @@
                 </lightning:layoutItem>
             </lightning:layout>
         </lightning:card>
-    </aura:if>
 </aura:component>
