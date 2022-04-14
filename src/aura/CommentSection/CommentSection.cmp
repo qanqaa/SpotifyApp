@@ -14,8 +14,8 @@
     <aura:handler event="c:CommentDeletedEVENT" action="{!c.onValueChange}"/>
 
         <lightning:card>
-            >>>>>>>>>SEKCJA: objectOwnerProperty="{!v.objectOwnerProperty}"
-            >>>>>>>>>SEKCJA: userId="{!v.userId}"
+<!--            >>>>>>>>>SEKCJA: objectOwnerProperty="{!v.objectOwnerProperty}"-->
+<!--            >>>>>>>>>SEKCJA: userId="{!v.userId}"-->
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
                     userId SECTION ="{!v.userId}"

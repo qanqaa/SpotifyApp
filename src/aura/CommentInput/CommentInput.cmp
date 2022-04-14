@@ -11,8 +11,8 @@
 
 
     <lightning:notificationsLibrary aura:id="notifLib"/>
-    >>>>>>>>>input: objectOwnerProperty="{!v.objectOwnerProperty.OwnerId}"<br/>
-    >>>>>>>>>input: userId="{!v.userId}"
+<!--    >>>>>>>>>input: objectOwnerProperty="{!v.objectOwnerProperty.OwnerId}"<br/>-->
+<!--    >>>>>>>>>input: userId="{!v.userId}"-->
     <!--    <aura:if isTrue="{!or(empty(v.objectOwnerProperty.Comment__c), not(equals(v.userId, v.objectOwnerProperty.OwnerId)))}">-->
 <!--    <aura:if isTrue="{!not(equals(v.userId, v.objectOwnerProperty.OwnerId))}">-->
         <aura:if isTrue="{!empty(v.objectOwnerProperty.Comment__c)}">
@@ -33,6 +33,9 @@
                     <lightning:button variant="brand" label="Submit" onclick="{!c.saveComment}"/>
                 </lightning:layoutItem>
             </lightning:layout>
+            <aura:set attribute="else">
+                Delete your comment to edit your review
+            </aura:set>
         </aura:if>
 <!--    </aura:if>-->
 </aura:component>

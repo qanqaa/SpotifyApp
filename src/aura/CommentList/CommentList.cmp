@@ -16,8 +16,8 @@
                     <aura:if isTrue="{! !empty(v.propertiesInfo)}">
                         <aura:iteration items="{!v.propertiesInfo}" var="proInf">
                             <aura:if isTrue="{! or(not(empty(proInf.Comment__c)), proInf.Rating__c>0)}">
-                                userId COMMENT LIST ="{!v.userId}"
-                                OWNERID COMMENT LIST ="{!proInf.OwnerId}"
+<!--                                userId COMMENT LIST ="{!v.userId}"-->
+<!--                                OWNERID COMMENT LIST ="{!proInf.OwnerId}"-->
                                 <c:Comment  propId="{!proInf.Id}"
                                             objectId="{!proInf.ObjectId__c}"
                                             commentText="{!proInf.Comment__c}"

@@ -1,12 +1,15 @@
 ({
     doInit: function(component, event, helper) {
-        if(component.get("v.item.isFavourite__c") !== undefined) {
-            component.set("v.liked", component.get("v.item.isFavourite__c"));
-        }
+    console.log(component.get("v.propertyItem.isFavourite__c"));
+    console.log(component.get("v.propertyItem.isBlack__c"));
 
-        if(component.get("v.item.isBlack__c") !== undefined) {
-            component.set("v.disliked", component.get("v.item.isBlack__c"));
-        }
+       if(component.get("v.propertyItem.isFavourite__c") !== undefined) {
+            component.set("v.liked", component.get("v.propertyItem.isFavourite__c"));
+       }
+
+       if(component.get("v.propertyItem.isBlack__c") !== undefined) {
+            component.set("v.disliked", component.get("v.propertyItem.isBlack__c"));
+       }
     },
 
     handleLikeButtonClick : function (component) {
@@ -16,12 +19,12 @@
         } else {
             action = component.get("c.addToFavourite");
         }
-
         action.setParams(
             {
+                propertyId: component.get('v.propertyItem.id'),
                 id: component.get("v.item.id"),
-                title: component.get("v.item.title"),
-                image: component.get("v.item.image")
+                title: component.get("v.item.name"),
+                image: component.get("v.item.imageURL")
             }
         );
 
@@ -45,9 +48,10 @@
 
         action.setParams(
             {
+                propertyId: component.get('v.propertyItem.id'),
                 id: component.get("v.item.id"),
-                title: component.get("v.item.title"),
-                image: component.get("v.item.image")
+                title: component.get("v.item.name"),
+                image: component.get("v.item.imageURL")
             }
         );
 

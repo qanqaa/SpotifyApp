@@ -8,6 +8,6 @@
     <aura:handler event="c:EV_SpinnerHide" action="{!c.hideSpinner}"/>
 
     <aura:if isTrue="{!v.spinnerVisible}">
-            <lightning:spinner/>
+        <lightning:spinner class="slds-is-fixed slds-color__background_gray-1" size="medium" variant="brand" alternativeText="Loading"/>
     </aura:if>
 </aura:component>

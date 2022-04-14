@@ -2,7 +2,7 @@ public with sharing class CommentSectionController {
 
     @AuraEnabled
     public static String addComment(String commentText, Integer rate, String objectId) {
-//        String currentUserId = UserInfo.getUserId();
+        String currentUserId = UserInfo.getUserId();
 //
 //            Spotify_Property__c existingObjectProperty =
 //                    Database.query(
@@ -32,12 +32,44 @@ public with sharing class CommentSectionController {
 //                return 'The following error has occurred while updating review. Error message: ' + errorMsg;
 //            }
 
-            Spotify_Property__c newComment = new Spotify_Property__c();
-            newComment.Comment__c = commentText;
-            newComment.Rating__c = rate;
-            newComment.ObjectId__c = objectId;
+        try{
+            Spotify_Property__c record = [
+                    SELECT Id, ObjectId__c, OwnerId, isFavourite__c, isBlack__c, Title__c, ImageURL__c, Comment__c,
+                            Rating__c
+                    FROM Spotify_Property__c
+                    WHERE ObjectId__c = :objectId
+                    AND OwnerId = :currentUserId
+                    LIMIT 1
+            ];
 
-            Database.SaveResult saveResult = Database.insert(newComment);
+            System.debug('NIE Tworze nowego spotify recordu bo był');
+
+            record.Comment__c = commentText;
+            record.Rating__c = rate;
+            record.ObjectId__c = objectId;
+
+            Database.SaveResult saveResult = Database.update(record);
+            System.debug(string.valueOf(saveResult));
+
+            if (saveResult.isSuccess()) {
+                return 'Successfully added review.';
+            }
+            else {
+                String errorMsg = '';
+                for (Database.Error err : saveResult.getErrors()) {
+                    errorMsg += err.getStatusCode() + ': ' + err.getMessage();
+                }
+                return 'The following error has occurred while adding review. Error message: ' + errorMsg;
+            }
+        }
+        catch(Exception e){
+
+            Spotify_Property__c record = new Spotify_Property__c();
+            record.Comment__c = commentText;
+            record.Rating__c = rate;
+            record.ObjectId__c = objectId;
+
+            Database.SaveResult saveResult = Database.insert(record);
             System.debug(string.valueOf(saveResult));
             if (saveResult.isSuccess()) {
                 return 'Successfully added review.';
@@ -48,6 +80,7 @@ public with sharing class CommentSectionController {
                 }
                 return 'The following error has occurred while adding review. Error message: ' + errorMsg;
             }
+        }
 
 
 
@@ -87,9 +120,25 @@ public with sharing class CommentSectionController {
                 Database.query(
                         'SELECT Id, ObjectId__c, OwnerId, Owner.Name, CreatedDate, ' +
                                 'Rating__c, Comment__c, isBlack__c, isFavourite__c  ' +
+                                'ImageURL__c, Title__c ' +
                                 'FROM Spotify_Property__c ' +
                                 'WHERE ObjectId__c = :objectId ' +
-                                'ORDER BY CreatedDate ASC');
+                                'ORDER BY CreatedDate ASC'
+                );
+        System.debug(objectSpotifyProperties);
+        return objectSpotifyProperties;
+    }
+
+    @AuraEnabled
+    public static List<Spotify_Property__c> getAllObjectSpotifyProperties() {
+        List<Spotify_Property__c> objectSpotifyProperties =
+                Database.query(
+                        'SELECT Id, ObjectId__c, OwnerId, Owner.Name, CreatedDate, ' +
+                                'Rating__c, Comment__c, isBlack__c, isFavourite__c,  ' +
+                                'ImageURL__c, Title__c ' +
+                                'FROM Spotify_Property__c ' +
+                                'ORDER BY Title__c ASC'
+                );
         System.debug(objectSpotifyProperties);
         return objectSpotifyProperties;
     }

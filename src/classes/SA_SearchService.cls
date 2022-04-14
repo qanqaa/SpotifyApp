@@ -126,7 +126,7 @@ public with sharing class SA_SearchService {
     }
 
     public static String createTrackDetailsQuery(String id) {
-        String searchQuery = 'SELECT Id, AlbumReleaseDate__c, AlbumName__c, Name, Duration__c, ImageURL__c, ArtistName__c  ' +
+        String searchQuery = 'SELECT Id, AlbumReleaseDate__c, AlbumName__c, Name, Duration__c, ImageURL__c ' +
                 'FROM Track__c WHERE Id = :id';
         System.debug(searchQuery);
         return searchQuery;
@@ -146,7 +146,7 @@ public with sharing class SA_SearchService {
     }
 
     public static String createTrackQuery(String searchTerm) {
-        String searchQuery = 'SELECT Id, Name, Duration__c, ImageURL__c, ArtistName__c ' +
+        String searchQuery = 'SELECT Id, Name, Duration__c, ImageURL__c ' +
                 'FROM Track__c';
         if (string.isNotEmpty(searchTerm)) {
             searchQuery += ' WHERE Name LIKE \'%' + string.escapeSingleQuotes(searchTerm) + '%\'';

@@ -76,7 +76,9 @@
                     <lightning:layoutItem size="12"
                                           mediumDeviceSize="12"
                                           padding="around-small">
-                        <c:LikeDislikeButtons item = "{!v.objectOwnerProp}"/>
+                        <c:LikeDislikeButtons propertyItem = "{!v.objectOwnerProp}"
+                                              item = "{!v.track}"/>
+
                         <c:CommentSection objectId="{!if(v.track.id.length > 0 , v.track.id, v.track.spotifyId)}"
                                           objectProperties = "{!v.objectProperties}"
                                           objectOwnerProperty = "{!v.objectOwnerProp}"/>

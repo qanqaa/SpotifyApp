@@ -36,21 +36,25 @@
                                     value="{!v.artist.genre}">
                             </output>
                             <br/><br/>
-                            <output class="slds-text-heading_label"
-                                    value="FOLLOWERS">
-                            </output>
-                            <br/>
-                            <output
-                                    value="{!v.artist.followers}">
-                            </output>
-                            <br/>
-                            <output class="slds-text-heading_label"
-                                    value="POPULARITY">
-                            </output>
-                            <br/>
-                            <output
-                                    value="{!v.artist.popularity}">
-                            </output>
+                            <aura:if isTrue="{!not(empty(v.artist.followers))}">
+                                <output class="slds-text-heading_label"
+                                        value="FOLLOWERS">
+                                </output>
+                                <br/>
+                                <output
+                                        value="{!v.artist.followers}">
+                                </output>
+                                <br/>
+                            </aura:if>
+                            <aura:if isTrue="{!not(empty(v.artist.popularity))}">
+                                <output class="slds-text-heading_label"
+                                        value="POPULARITY">
+                                </output>
+                                <br/>
+                                <output
+                                        value="{!v.artist.popularity}">
+                                </output>
+                            </aura:if>
                             <br/>
                         </lightning:layoutItem>
                     </lightning:layout>

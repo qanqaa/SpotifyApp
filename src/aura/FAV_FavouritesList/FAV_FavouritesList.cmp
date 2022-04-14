@@ -1,0 +1,33 @@
+<aura:component description="FAV_FavouritesList"
+                implements="flexipage:availableForAllPageTypes"
+                controller="CommentSectionController">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:attribute name="showTrackResults" type="Boolean" default="false"/>
+    <aura:attribute name="showArtistResults" type="Boolean" default="false"/>
+
+    <aura:attribute name="foundedTracks" type="Object[]"/>
+    <aura:attribute name="foundedArtists" type="Object[]"/>
+    <aura:attribute name="objectProperties" type="Object"/>
+
+    <lightning:card>
+<!--    <aura:if isTrue="{!v.showTrackResults}">-->
+        <lightning:layoutItem size="6"
+                              mediumDeviceSize="6"
+                              padding="around-small">
+            <c:SA_TrackResults tracks="{!v.objectProperties}"/>
+        </lightning:layoutItem>
+<!--    </aura:if>-->
+
+<!--    <aura:if isTrue="{!v.showArtistResults}">-->
+<!--        <lightning:layoutItem size="6"-->
+<!--                              mediumDeviceSize="6"-->
+<!--                              padding="around-small">-->
+<!--            <c:SA_ArtistResults artists="{!v.foundedArtists}"/>-->
+<!--        </lightning:layoutItem>-->
+<!--    </aura:if>-->
+
+    </lightning:card>
+    <c:Spinner aura:id='spinner'/>
+</aura:component>

@@ -10,7 +10,7 @@ public with sharing class SA_ObjectMapper {
             trackDTO.name = track.Name;
             trackDTO.imageURL = track.ImageURL__c;
             trackDTO.duration = Integer.valueOf(track.Duration__c);
-            trackDTO.artistName = track.ArtistName__c;
+//            trackDTO.artistName = track.ArtistName__c;
             trackDTO.albumName = track.AlbumName__c;
             trackDTO.albumReleaseDate = string.valueOf(track.AlbumReleaseDate__c);
 
