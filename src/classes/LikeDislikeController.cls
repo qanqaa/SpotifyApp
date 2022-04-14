@@ -28,15 +28,16 @@ public with sharing class LikeDislikeController {
 //    }
 
     @AuraEnabled
-    public static void addToFavourite( String propertyId , String id, String title, String imageURL ){
+    public static void addToFavourite( String propertyId , String id, String title, String imageURL, String artist ){
         System.debug('dostaje id' + id);
         System.debug('dostaje title' + title);
         System.debug('dostaje imageURL' + imageURL);
+        System.debug('dostaje artist' + artist);
 
         String currentUserId = UserInfo.getUserId();
         try{
             Spotify_Property__c record = [
-                    SELECT Id, ObjectId__c, OwnerId, isFavourite__c, isBlack__c, Title__c, ImageURL__c
+                    SELECT Id, ObjectId__c, OwnerId, isFavourite__c, isBlack__c, Title__c, ImageURL__c, Artist_Name__c
                     FROM Spotify_Property__c
                     WHERE ObjectId__c = :id
                     AND OwnerId = :currentUserId
@@ -48,6 +49,7 @@ public with sharing class LikeDislikeController {
             record.isBlack__c = false;
             record.Title__c = title;
             record.ImageURL__c = imageURL;
+            record.Artist_Name__c = artist;
 
             Database.SaveResult saveResult = Database.update(record);
             System.debug(string.valueOf(saveResult));
@@ -62,6 +64,7 @@ public with sharing class LikeDislikeController {
             record.isBlack__c = false;
             record.Title__c = title;
             record.ImageURL__c = imageURL;
+            record.Artist_Name__c = artist;
 
             Database.SaveResult saveResult = Database.insert(record);
             System.debug(string.valueOf(saveResult));
@@ -69,12 +72,12 @@ public with sharing class LikeDislikeController {
     }
 
     @AuraEnabled
-    public static void removeFromFavourite( String propertyId , String id, String title, String imageURL ){
+    public static void removeFromFavourite( String propertyId , String id, String title, String imageURL, String artist ){
         System.debug('USUWANKO dostaje id' + id);
         String currentUserId = UserInfo.getUserId();
         try{
             Spotify_Property__c record = [
-                    SELECT Id, ObjectId__c, OwnerId, isFavourite__c, isBlack__c, Title__c, ImageURL__c
+                    SELECT Id, ObjectId__c, OwnerId, isFavourite__c, isBlack__c, Title__c, ImageURL__c, Artist_Name__c
                     FROM Spotify_Property__c
                     WHERE ObjectId__c = :id
                     AND OwnerId = :currentUserId
@@ -108,12 +111,12 @@ public with sharing class LikeDislikeController {
     }
 
     @AuraEnabled
-    public static void addToDisliked( String propertyId , String id, String title, String imageURL ){
+    public static void addToDisliked( String propertyId , String id, String title, String imageURL, String artist ){
         System.debug('dostaje id' + id);
         String currentUserId = UserInfo.getUserId();
         try{
             Spotify_Property__c record = [
-                    SELECT Id, ObjectId__c, OwnerId, isFavourite__c, isBlack__c, Title__c, ImageURL__c
+                    SELECT Id, ObjectId__c, OwnerId, isFavourite__c, isBlack__c, Title__c, ImageURL__c, Artist_Name__c
                     FROM Spotify_Property__c
                     WHERE ObjectId__c = :id
                     AND OwnerId = :currentUserId
@@ -125,6 +128,7 @@ public with sharing class LikeDislikeController {
             record.isBlack__c = true;
             record.Title__c = title;
             record.ImageURL__c = imageURL;
+            record.Artist_Name__c = artist;
 
             Database.SaveResult saveResult = Database.update(record);
             System.debug(string.valueOf(saveResult));
@@ -146,12 +150,12 @@ public with sharing class LikeDislikeController {
     }
 
     @AuraEnabled
-    public static void removeFromDisliked( String propertyId , String id, String title, String imageURL ){
+    public static void removeFromDisliked( String propertyId , String id, String title, String imageURL, String artist ){
         System.debug('USUWANKO dostaje id' + id);
         String currentUserId = UserInfo.getUserId();
         try{
             Spotify_Property__c record = [
-                    SELECT Id, ObjectId__c, OwnerId, isFavourite__c, isBlack__c, Title__c, ImageURL__c
+                    SELECT Id, ObjectId__c, OwnerId, isFavourite__c, isBlack__c, Title__c, ImageURL__c, Artist_Name__c
                     FROM Spotify_Property__c
                     WHERE ObjectId__c = :id
                     AND OwnerId = :currentUserId

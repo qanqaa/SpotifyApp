@@ -24,7 +24,8 @@
                 propertyId: component.get('v.propertyItem.id'),
                 id: component.get("v.item.id"),
                 title: component.get("v.item.name"),
-                imageURL: component.get("v.item.imageURL")
+                imageURL: component.get("v.item.imageURL"),
+                artist: component.get('v.item.featArtists[0].name')
             }
         );
 
@@ -51,7 +52,8 @@
                 propertyId: component.get('v.propertyItem.id'),
                 id: component.get("v.item.id"),
                 title: component.get("v.item.name"),
-                imageURL: component.get("v.item.imageURL")
+                imageURL: component.get("v.item.imageURL"),
+                artist: component.get('v.item.featArtists[0].name')
             }
         );
 
@@ -61,7 +63,6 @@
                 component.set('v.disliked', !component.get('v.disliked'));
             }
         });
-
         $A.enqueueAction(action);
     },
 })

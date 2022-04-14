@@ -1,0 +1,34 @@
+<aura:component description="FAV_Track" controller="SA_TrackController"
+                implements="flexipage:availableForAllPageTypes,force:appHostable"
+                access="global">
+    <aura:registerEvent name="trackDetailsLoaded" type="c:EV_TrackDetailsLoaded"/>
+    <aura:registerEvent name="spotifyPropertiesLoaded" type="c:EV_SpotifyPropertiesLoaded"/>
+    <aura:registerEvent name="showSpinner" type="c:EV_SpinnerShow"/>
+    <aura:registerEvent name="hideSpinner" type="c:EV_SpinnerHide"/>
+
+    <aura:attribute name="image" type="String"/>
+    <aura:attribute name="title" type="String"/>
+    <aura:attribute name="id" type="String"/>
+    <aura:attribute name="artistName" type="String"/>
+
+    <lightning:card>
+        <div class="slds-p-around_medium"
+             aura:id = "trackOver"
+             style="border-radius:5%;">
+<!--             onclick="{!c.onTrackClick}"-->
+<!--             onmouseover="{!c.onMouseOver}"-->
+<!--             onmouseout="{!c.onMouseOut}">-->
+            <div style="display: inline-block; max-width:30%">
+                <img class="slds-align-top" src="{!v.image}" style="width:100px; height:100px; border-radius:5%;"/>
+            </div>
+            <div class="slds-p-left_medium slds-align-top" style="display: inline-block; max-width:70%">
+                <output class=" slds-p-top_medium slds-align-top slds-text-title_bold"
+                        value="{!v.title}"></output>
+                <br/>
+                <output class=" slds-align-top"
+                        value="{!v.artistName}"></output>
+            </div>
+        </div>
+    </lightning:card>
+
+</aura:component>

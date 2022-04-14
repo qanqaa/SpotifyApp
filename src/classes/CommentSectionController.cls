@@ -130,16 +130,65 @@ public with sharing class CommentSectionController {
     }
 
     @AuraEnabled
-    public static List<Spotify_Property__c> getAllObjectSpotifyProperties() {
+    public static List<TrackDTO> getAllObjectSpotifyPropertiesFavourites() {
+        String currentUserId = UserInfo.getUserId();
         List<Spotify_Property__c> objectSpotifyProperties =
                 Database.query(
                         'SELECT Id, ObjectId__c, OwnerId, Owner.Name, CreatedDate, ' +
                                 'Rating__c, Comment__c, isBlack__c, isFavourite__c,  ' +
-                                'ImageURL__c, Title__c ' +
+                                'ImageURL__c, Title__c, Artist_Name__c ' +
                                 'FROM Spotify_Property__c ' +
+                                'WHERE OwnerId = :currentUserId ' +
                                 'ORDER BY Title__c ASC'
                 );
-        System.debug(objectSpotifyProperties);
-        return objectSpotifyProperties;
+
+        List<TrackDTO> trackDTOS = new List<TrackDTO>();
+        for(Spotify_Property__c spotifyProperty : objectSpotifyProperties){
+
+            if(spotifyProperty.isFavourite__c == true){
+                TrackDTO trackDTO = new TrackDTO();
+                trackDTO.id = spotifyProperty.ObjectId__c;
+                trackDTO.name = spotifyProperty.Title__c;
+                trackDTO.imageURL = spotifyProperty.ImageURL__c;
+                trackDTO.artistName = spotifyProperty.Artist_Name__c;
+                trackDTOS.add(trackDTO);
+            }
+
+        }
+        System.debug('FAVOURITESSSSSSSSS' + objectSpotifyProperties);
+        System.debug('FAVOURITESSSSSSSSS' + trackDTOS);
+        return trackDTOS;
+    }
+
+    @AuraEnabled
+    public static List<TrackDTO> getAllObjectSpotifyPropertiesDisliked() {
+        String currentUserId = UserInfo.getUserId();
+        System.debug(currentUserId);
+        List<Spotify_Property__c> objectSpotifyProperties =
+                Database.query(
+                        'SELECT Id, ObjectId__c, OwnerId, Owner.Name, CreatedDate, ' +
+                                'Rating__c, Comment__c, isBlack__c, isFavourite__c,  ' +
+                                'ImageURL__c, Title__c, Artist_Name__c ' +
+                                'FROM Spotify_Property__c ' +
+                                'WHERE OwnerId = :currentUserId ' +
+                                'ORDER BY Title__c ASC'
+                );
+
+        List<TrackDTO> trackDTOS = new List<TrackDTO>();
+        for(Spotify_Property__c spotifyProperty : objectSpotifyProperties){
+
+            if(spotifyProperty.isFavourite__c == false){
+                TrackDTO trackDTO = new TrackDTO();
+                trackDTO.id = spotifyProperty.ObjectId__c;
+                trackDTO.name = spotifyProperty.Title__c;
+                trackDTO.imageURL = spotifyProperty.ImageURL__c;
+                trackDTO.artistName = spotifyProperty.Artist_Name__c;
+                trackDTOS.add(trackDTO);
+            }
+
+        }
+        System.debug('FAVOURITESSSSSSSSS' + objectSpotifyProperties);
+        System.debug('FAVOURITESSSSSSSSS' + trackDTOS);
+        return trackDTOS;
     }
 }

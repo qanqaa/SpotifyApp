@@ -1,6 +1,6 @@
 ({
     getComments: function(component, event, objectId) {
-        let actionComment = component.get("c.getAllObjectSpotifyPropertiesFavourites");
+        let actionComment = component.get("c.getAllObjectSpotifyPropertiesDisliked");
 
         actionComment.setCallback(this, $A.getCallback(function(response) {
             let state = response.getState();
