@@ -2,11 +2,12 @@
 
     <aura:attribute name="objectId" type="String"/>
     <aura:attribute name="propertiesInfo" type="Spotify_Property__c[]"/>
+    <aura:attribute name="userId" type="String"/>
 
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
-    <aura:handler event="c:EV_CommentAdded" action="{!c.onValueChange}"/>
-    <aura:handler event="c:CommentDeletedEVENT" action="{!c.onValueChange}"/>
+<!--    <aura:handler name="init" value="{!this}" action="{!c.onValueChange}"/>-->
+<!--    <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>-->
+<!--    <aura:handler event="c:EV_CommentAdded" action="{!c.onValueChange}"/>-->
+<!--    <aura:handler event="c:CommentDeletedEVENT" action="{!c.onValueChange}"/>-->
 
     <lightning:card>
         <div class="slds-text-heading_large slds-p-left_medium">Comments</div>
@@ -15,12 +16,16 @@
                     <aura:if isTrue="{! !empty(v.propertiesInfo)}">
                         <aura:iteration items="{!v.propertiesInfo}" var="proInf">
                             <aura:if isTrue="{! or(not(empty(proInf.Comment__c)), proInf.Rating__c>0)}">
+                                userId COMMENT LIST ="{!v.userId}"
+                                OWNERID COMMENT LIST ="{!proInf.OwnerId}"
                                 <c:Comment  propId="{!proInf.Id}"
                                             objectId="{!proInf.ObjectId__c}"
                                             commentText="{!proInf.Comment__c}"
                                             rate="{!proInf.Rating__c}"
                                             commentAuthor="{!proInf.Owner.Name}"
-                                            commentDate="{!proInf.LastModifiedDate}"/>
+                                            commentDate="{!proInf.LastModifiedDate}"
+                                            userId="{!v.userId}"
+                                            propertyOwnerId="{!proInf.OwnerId}"/>
                             </aura:if>
                         </aura:iteration>
                         <aura:set attribute="else">

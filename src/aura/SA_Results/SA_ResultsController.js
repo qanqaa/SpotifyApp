@@ -19,4 +19,8 @@
         helper.showArtistDetails(component, event);
     },
 
+    onSpotifyPropertiesLoaded: function(component, event, helper) {
+    console.log('nareszcie????????????????');
+        helper.showPropertiesSection(component, event);
+    },
 })

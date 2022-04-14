@@ -2,7 +2,7 @@
                 implements="force:appHostable,flexipage:availableForAllPageTypes">
 <!--    <aura:handler event="c:EV_ArtDetLoaded" action="{!c.onArtistDetailsLoaded}"/>-->
     <aura:handler event="c:EV_ArtistTopTracksLoaded" action="{!c.onArtistTopTracksLoaded}"/>
-    <aura:handler event="c:EV_SpotifyPropertiesLoaded" action="{!c.onSpotifyPropertiesLoaded}"/>
+<!--    <aura:handler event="c:EV_SpotifyPropertiesLoaded" action="{!c.onSpotifyPropertiesLoaded}"/>-->
 
 <!--    <aura:attribute name="showDetails" type="Boolean" default="false"/>-->
     <aura:attribute name="showTopTracks" type="Boolean" default="false"/>

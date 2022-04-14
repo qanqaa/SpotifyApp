@@ -7,25 +7,32 @@
     <aura:attribute name="rate" type="Integer" default="1"/>
     <aura:attribute name="objectId" type="String"/>
     <aura:attribute name="objectOwnerProperty" type="Object"/>
+    <aura:attribute name="userId" type="String"/>
+
 
     <lightning:notificationsLibrary aura:id="notifLib"/>
+    >>>>>>>>>input: objectOwnerProperty="{!v.objectOwnerProperty.OwnerId}"<br/>
+    >>>>>>>>>input: userId="{!v.userId}"
+    <!--    <aura:if isTrue="{!or(empty(v.objectOwnerProperty.Comment__c), not(equals(v.userId, v.objectOwnerProperty.OwnerId)))}">-->
+<!--    <aura:if isTrue="{!not(equals(v.userId, v.objectOwnerProperty.OwnerId))}">-->
+        <aura:if isTrue="{!empty(v.objectOwnerProperty.Comment__c)}">
+            <lightning:layout class="slds-m-around_small" multipleRows="true">
+                <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
+                    <c:FiveStarRating aura:id="starRate" value="{!v.rate}" readonly="false"/>
+                </lightning:layoutItem>
 
-        <lightning:layout class="slds-m-around_small" multipleRows="true">
-            <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-                <c:FiveStarRating aura:id="starRate" value="{!v.rate}" readonly="false"/>
-            </lightning:layoutItem>
+                <lightning:layoutItem>
+                    <lightning:inputRichText value="{!v.commentText}"
+                                             placeholder="Type here..."
+                                             disabledCategories="FORMAT_FONT"
+                                             label="Add comment to your rating"
+                                             labelVisible="true"/>
+                </lightning:layoutItem>
 
-            <lightning:layoutItem>
-                <lightning:inputRichText value="{!v.commentText}"
-                                         placeholder="Type here..."
-                                         disabledCategories="FORMAT_FONT"
-                                         label="Add comment to your rating"
-                                         labelVisible="true"/>
-            </lightning:layoutItem>
-
-            <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-                <lightning:button variant="brand" label="Submit" onclick="{!c.saveComment}"/>
-            </lightning:layoutItem>
-        </lightning:layout>
-
+                <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
+                    <lightning:button variant="brand" label="Submit" onclick="{!c.saveComment}"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:if>
+<!--    </aura:if>-->
 </aura:component>

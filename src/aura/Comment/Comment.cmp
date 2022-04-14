@@ -6,15 +6,21 @@
     <aura:attribute name="rate" type="Integer" default="0"/>
     <aura:attribute name="commentAuthor" type="String"/>
     <aura:attribute name="commentDate" type="String"/>
+    <aura:attribute name="userId" type="String"/>
+    <aura:attribute name="propertyOwnerId" type="String"/>
 
     <aura:registerEvent name="commentDeletedSuccessfully" type="c:CommentDeletedEVENT"/>
-
+    userId COMMENT="{!v.userId}"
+    propertyOwnerId="{!v.propertyOwnerId}"
         <lightning:layout class="slds-m-around_small" multipleRows="true">
             <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
                 <lightning:formattedText value="{!v.commentAuthor}"/>
                 <lightning:formattedDateTime value="{!v.commentDate}" hour="numeric"
                                              minute="numeric" second="numeric"/>
-                <lightning:button variant="destructive" label="Delete" onclick="{!c.deleteComment}"/>
+                <aura:if isTrue="{!equals(v.userId,v.propertyOwnerId)}">
+                    <lightning:button variant="destructive" label="Delete" onclick="{!c.deleteComment}"/>
+                </aura:if>
+
             </lightning:layoutItem>
 
             <aura:if isTrue="{!v.rate>0}">

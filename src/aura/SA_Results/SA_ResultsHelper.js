@@ -57,5 +57,24 @@
          else {
              component.set('v.showArtistDetails', false);
          }
-      }
+      },
+
+    showPropertiesSection: function(component, event) {
+        let objectProperties = event.getParam('spotProp');
+        var userId = $A.get("$SObjectType.CurrentUser.Id");
+
+        console.log('userId' + userId);
+        console.log('objectProperties' + objectProperties);
+        console.log('objectProperties0 ' + objectProperties[0].OwnerId);
+        if(objectProperties){
+            component.set('v.objectProperties', objectProperties);
+            for(let i = 0; i < objectProperties.length; i++){
+                if(objectProperties[i].OwnerId == userId){
+                    component.set('v.objectOwnerProp', objectProperties[i]);
+                    console.log('objectProperties[i]' + objectProperties[i]);
+                    break;
+                }
+            }
+        }
+    },
 })

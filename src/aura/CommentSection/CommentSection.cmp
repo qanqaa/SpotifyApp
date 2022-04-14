@@ -1,21 +1,33 @@
 <aura:component description="CommentSection" controller="CommentSectionController">
 
-    <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
+<!--    <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>-->
 
     <aura:attribute name="objectId" type="String"/>
     <aura:attribute name="objectProperties" type="Object[]"/>
     <aura:attribute name="objectOwnerProperty" type="Object"/>
+    <aura:attribute name="userId" type="String"/>
 <!--    <aura:attribute name="showInput" type="Boolean" default="true"/>-->
 
+    <aura:handler name="init" value="{!this}" action="{!c.onValueChange}"/>
+    <aura:handler name="change" value="{!v.objectId}" action="{!c.onValueChange}"/>
+    <aura:handler event="c:EV_CommentAdded" action="{!c.onValueChange}"/>
+    <aura:handler event="c:CommentDeletedEVENT" action="{!c.onValueChange}"/>
 
         <lightning:card>
+            >>>>>>>>>SEKCJA: objectOwnerProperty="{!v.objectOwnerProperty}"
+            >>>>>>>>>SEKCJA: userId="{!v.userId}"
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-                    <c:CommentList objectId="{!v.objectId}"/>
+                    userId SECTION ="{!v.userId}"
+                    <c:CommentList objectId="{!v.objectId}"
+                                   userId="{!v.userId}"
+                                   propertiesInfo="{!v.objectProperties}"/>
                 </lightning:layoutItem>
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
+                    objectOwnerProperty="{!v.objectOwnerProperty}"
                     <c:CommentInput objectOwnerProperty="{!v.objectOwnerProperty}"
-                                    objectId="{!v.objectId}"/>
+                                    objectId="{!v.objectId}"
+                                    userId="{!v.userId}"/>
                 </lightning:layoutItem>
             </lightning:layout>
         </lightning:card>

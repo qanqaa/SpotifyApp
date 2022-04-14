@@ -1,10 +1,10 @@
 ({
-    getComments: function(component, event, objectId) {
+    /*getComments: function(component, event, objectId) {
         let actionComment = component.get("c.getObjectSpotifyProperties");
         actionComment.setParams({
             objectId: objectId
         });
-
+        console.log('siemankoooooo');
         actionComment.setCallback(this, $A.getCallback(function(response) {
             let state = response.getState();
             switch(state){
@@ -23,7 +23,7 @@
                             commentsToDisplay.push(propertiesInfo[i]);
                         }
                     }
-                    component.set("v.propertiesInfo", propertiesInfo);
+                    component.set("v.propertiesInfo", commentsToDisplay);
                     break;
 
                 case "INCOMPLETE":
@@ -34,5 +34,5 @@
             }
         }));
         $A.enqueueAction(actionComment);
-    },
+    },*/
 })

@@ -1,9 +1,10 @@
 ({
-    /*onTrackDetailsLoaded: function(component, event, helper) {
+    onTrackDetailsLoaded: function(component, event, helper) {
         helper.showTrackDetails(component, event);
-    },*/
+    },
 
     onSpotifyPropertiesLoaded: function(component, event, helper) {
+    console.log('nareszcie????????????????');
         helper.showPropertiesSection(component, event);
     },
 

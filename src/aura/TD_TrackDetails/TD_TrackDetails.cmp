@@ -5,12 +5,14 @@
     <aura:registerEvent name="showSpinner" type="c:EV_SpinnerShow"/>
     <aura:registerEvent name="hideSpinner" type="c:EV_SpinnerHide"/>
 
+    <aura:handler name="init" value="{!this}" action="{!c.onTrackDetailsLoaded}"/>
 <!--    <aura:handler event="c:EV_TrackDetailsLoaded" action="{!c.onTrackDetailsLoaded}"/>-->
-    <aura:handler event="c:EV_SpotifyPropertiesLoaded" action="{!c.onSpotifyPropertiesLoaded}"/>
+    <aura:handler name="change" value="{!v.track}" action="{!c.onTrackDetailsLoaded}"/>
+<!--    <aura:handler event="c:EV_SpotifyPropertiesLoaded" action="{!c.onSpotifyPropertiesLoaded}"/>-->
 
     <aura:attribute name="showDetails" type="Boolean" default="false"/>
 
-    <aura:attribute name="track" type="TrackDTO"/>
+    <aura:attribute name="track" type="Object"/>
     <aura:attribute name="objectProperties" type="Object[]"/>
     <aura:attribute name="objectOwnerProp" type="Object"/>
 

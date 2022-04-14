@@ -13,7 +13,6 @@
                 "tracks": response.getReturnValue()
             });
             event.fire();
-            console.log('zwraca coś' + response.getReturnValue());
         }));
         $A.enqueueAction(actionTrack);
 
@@ -27,10 +26,7 @@
             event2.setParams({
                 "artists": response.getReturnValue()
             });
-            console.log(event2.getParam("artists"));
-            console.log(response.getReturnValue());
             event2.fire();
-            console.log(response.getReturnValue());
             let hideSpinner = $A.get("e.c:EV_SpinnerHide").fire();
         }));
         $A.enqueueAction(actionArtist);

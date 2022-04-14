@@ -1,15 +1,10 @@
 ({
-    /*showTrackDetails: function(component, event) {
-        let track = event.getParam('track');
+    showTrackDetails: function(component, event) {
+        let track = component.get("v.track");
         if(track){
-            component.set('v.showDetails', true);
-            component.set('v.track', track);
             component.set('v.durationString', this.parseDurationToString(track.duration));
         }
-        else {
-             component.set('v.showDetails', false);
-        }
-    },*/
+    },
 
     showPropertiesSection: function(component, event) {
         let objectProperties = event.getParam('spotProp');
