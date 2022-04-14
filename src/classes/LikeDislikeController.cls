@@ -30,6 +30,9 @@ public with sharing class LikeDislikeController {
     @AuraEnabled
     public static void addToFavourite( String propertyId , String id, String title, String imageURL ){
         System.debug('dostaje id' + id);
+        System.debug('dostaje title' + title);
+        System.debug('dostaje imageURL' + imageURL);
+
         String currentUserId = UserInfo.getUserId();
         try{
             Spotify_Property__c record = [

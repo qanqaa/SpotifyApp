@@ -2,6 +2,7 @@
 
         <aura:attribute name="item" type="Object" access="public"/>
         <aura:attribute name="propertyItem" type="Object" access="public"/>
+        <aura:attribute name="itemType" type="String" access="public"/>
 
         <aura:attribute name="liked" default="false" type="Boolean" />
         <aura:attribute name="disliked" default="false" type="Boolean" />

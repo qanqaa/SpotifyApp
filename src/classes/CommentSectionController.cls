@@ -119,7 +119,7 @@ public with sharing class CommentSectionController {
         List<Spotify_Property__c> objectSpotifyProperties =
                 Database.query(
                         'SELECT Id, ObjectId__c, OwnerId, Owner.Name, CreatedDate, ' +
-                                'Rating__c, Comment__c, isBlack__c, isFavourite__c  ' +
+                                'Rating__c, Comment__c, isBlack__c, isFavourite__c,  ' +
                                 'ImageURL__c, Title__c ' +
                                 'FROM Spotify_Property__c ' +
                                 'WHERE ObjectId__c = :objectId ' +

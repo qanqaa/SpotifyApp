@@ -24,7 +24,7 @@
                 propertyId: component.get('v.propertyItem.id'),
                 id: component.get("v.item.id"),
                 title: component.get("v.item.name"),
-                image: component.get("v.item.imageURL")
+                imageURL: component.get("v.item.imageURL")
             }
         );
 
@@ -51,7 +51,7 @@
                 propertyId: component.get('v.propertyItem.id'),
                 id: component.get("v.item.id"),
                 title: component.get("v.item.name"),
-                image: component.get("v.item.imageURL")
+                imageURL: component.get("v.item.imageURL")
             }
         );
 

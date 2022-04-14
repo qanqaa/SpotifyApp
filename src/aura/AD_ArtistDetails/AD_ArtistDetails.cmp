@@ -74,8 +74,8 @@
                     </lightning:layout>
                 </lightning:layoutItem>
                 <lightning:layoutItem size="6">
-                    <c:LikeDislikeButtons item = "{!v.objectOwnerProp}"/>
-                    <c:CommentSection objectId="{!if(v.artist.id.length > 0, v.artist.id, v.artist.spotifyId)}"/>
+<!--                    <c:LikeDislikeButtons item = "{!v.objectOwnerProp}"/>-->
+<!--                    <c:CommentSection objectId="{!if(v.artist.id.length > 0, v.artist.id, v.artist.spotifyId)}"/>-->
                 </lightning:layoutItem>
             </lightning:layout>
         </lightning:card>
