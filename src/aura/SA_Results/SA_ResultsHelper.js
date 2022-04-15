@@ -10,6 +10,8 @@
             if(trackList.length > 0) {
                 component.set('v.showTrackResults', true);
                 component.set('v.showSearchResults', true);
+             component.set('v.showTrackDetails', false);
+             component.set('v.showArtistDetails', false);
             }
             else {
                 component.set('v.showTrackResults', false);
@@ -24,6 +26,8 @@
             if(artistList.length > 0) {
                 component.set('v.showArtistResults', true);
                 component.set('v.showSearchResults', true);
+             component.set('v.showTrackDetails', false);
+             component.set('v.showArtistDetails', false);
             }
             else {
                 component.set('v.showArtistResults', false);

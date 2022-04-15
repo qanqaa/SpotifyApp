@@ -15,13 +15,16 @@
 <!--    >>>>>>>>>input: userId="{!v.userId}"-->
     <!--    <aura:if isTrue="{!or(empty(v.objectOwnerProperty.Comment__c), not(equals(v.userId, v.objectOwnerProperty.OwnerId)))}">-->
 <!--    <aura:if isTrue="{!not(equals(v.userId, v.objectOwnerProperty.OwnerId))}">-->
-        <aura:if isTrue="{!empty(v.objectOwnerProperty.Comment__c)}">
+    <div class="slds-p-around_large">
+    <lightning:card title="Add track review" iconName="utility:rating" class="slds-card_boundary">
+        <aura:if isTrue="{!and(empty(v.objectOwnerProperty.Comment__c), or(lessthanorequal(v.objectOwnerProperty.Rating__c,0), empty(v.objectOwnerProperty.Rating__c)))}">
             <lightning:layout class="slds-m-around_small" multipleRows="true">
-                <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
+                <br/>
+                <lightning:layoutItem  size="12" class="slds-p-bottom_small">
                     <c:FiveStarRating aura:id="starRate" value="{!v.rate}" readonly="false"/>
                 </lightning:layoutItem>
 
-                <lightning:layoutItem>
+                <lightning:layoutItem size="12" class="slds-p-bottom_small">
                     <lightning:inputRichText value="{!v.commentText}"
                                              placeholder="Type here..."
                                              disabledCategories="FORMAT_FONT"
@@ -29,13 +32,15 @@
                                              labelVisible="true"/>
                 </lightning:layoutItem>
 
-                <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
+                <lightning:layoutItem size="12" class="slds-p-bottom_small">
                     <lightning:button variant="brand" label="Submit" onclick="{!c.saveComment}"/>
                 </lightning:layoutItem>
             </lightning:layout>
             <aura:set attribute="else">
-                Delete your comment to edit your review
+                <span style="color:red; padding-left:20px;"><i>Delete your comment in order to edit your review.</i></span>
             </aura:set>
         </aura:if>
+    </lightning:card>
+    </div>
 <!--    </aura:if>-->
 </aura:component>

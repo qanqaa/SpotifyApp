@@ -2,3 +2,23 @@
     background-color: #F4F4F4;
     transition: background-color 500ms ease-out 100ms;
 }
+
+.THIS .itemImage{
+    width: 130px;
+    height: 130px;
+    border-radius:8%;
+    /*border-style: solid;
+    border-color: rgb(200,200,200);*/
+    overflow: hidden;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+    transition: 500ms;
+}
+
+.THIS .imageHover {
+    height: 140px;
+    width: 140px;
+    border-radius: 8%;
+    border-style: none;
+    box-shadow: 0px 10px 21px 0px rgba(0, 0, 0, 0.35),inset 0px 3px 7px 0px rgba(0, 0, 0, 0.35);
+  }

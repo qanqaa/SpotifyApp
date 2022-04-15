@@ -19,30 +19,35 @@
     <aura:attribute name="durationString" type="String"/>
 
 <!--    <aura:if isTrue="{!v.showDetails}">-->
-        <lightning:card title="Track details" iconName="utility:play">
-            <lightning:layout multipleRows="true">
-                <lightning:layoutItem size="12"
-                                      mediumDeviceSize="3"
-                                      padding="around-small">
-                    <img class="slds-float_left" src="{!v.track.imageURL}" style="width:200px; height:200px;"/>
+        <lightning:card title="Track details" iconName="utility:play" class="slds-card_boundary">
+            <lightning:layout horizontalAlign="space" multipleRows="true">
+                <lightning:layoutItem size="6"
+                                      class="slds-p-around_large">
+                    <img class="slds-float_left" src="{!v.track.imageURL}"
+                         style="float:right; max-width:320px; max-height:320px; border-radius:8%;"/>
                 </lightning:layoutItem>
-                <lightning:layoutItem size="12"
-                                      mediumDeviceSize="6"
-                                      padding="around-small"
-                                      class="slds-text-longform">
+                <lightning:layoutItem size ="6"
+                                      class="slds-p-around_large">
+                    <c:LikeDislikeButtons propertyItem = "{!v.objectOwnerProp}"
+                                          item = "{!v.track}"/>
                     <output class="slds-text-heading_label"
                             value="SONG">
                     </output>
                     <br/>
-                    <output class="slds-text-heading_large"
+                    <output class="slds-text-heading_label"
+                            style="font-weight:700; font-size:19px;"
                             value="{!v.track.name}">
+                    </output>
+                    <br/>
+                    <output class="slds-text-heading_label"
+                            value="ARTISTS">
                     </output>
                     <br/>
                     <aura:iteration items="{!v.track.featArtists}" var="featArtist">
                         <output onclick="{!c.onArtistClick}"
                                 id="{!if(featArtist.id != null, featArtist.id, featArtist.spotifyId)}"
-                                style="cursor:pointer;"
-                                class="slds-text-link_faux"
+                                class="slds-text-heading_label slds-text-link_faux"
+                                style="font-weight:700; font-size:19px; cursor:pointer;"
                                 value="{!featArtist.name + '   '}">
                         </output>
 
@@ -52,7 +57,8 @@
                             value="ALBUM">
                     </output>
                     <br/>
-                    <output
+                    <output class="slds-text-heading_label"
+                            style="font-weight:700; font-size:19px;"
                             value="{!v.track.albumName}">
                     </output>
                     <br/>
@@ -60,7 +66,8 @@
                             value="RELEASE DATE">
                     </output>
                     <br/>
-                    <output
+                    <output class="slds-text-heading_label"
+                            style="font-weight:700; font-size:19px;"
                             value="{!v.track.albumReleaseDate}">
                     </output>
                     <br/>
@@ -68,21 +75,22 @@
                             value="DURATION">
                     </output>
                     <br/>
-                    <output
+                    <output class="slds-text-heading_label"
+                            style="font-weight:700; font-size:19px;"
                             value="{!v.durationString}">
                     </output>
                     <br/>
                 </lightning:layoutItem>
+                <div style="width:75%;">
+                <lightning:card title="Track reviews" iconName="utility:comments" class="slds-card_boundary slds-m-around_x-large">
                     <lightning:layoutItem size="12"
-                                          mediumDeviceSize="12"
-                                          padding="around-small">
-                        <c:LikeDislikeButtons propertyItem = "{!v.objectOwnerProp}"
-                                              item = "{!v.track}"/>
-
+                                          class="slds-p-around_large">
                         <c:CommentSection objectId="{!if(v.track.id.length > 0 , v.track.id, v.track.spotifyId)}"
                                           objectProperties = "{!v.objectProperties}"
                                           objectOwnerProperty = "{!v.objectOwnerProp}"/>
                     </lightning:layoutItem>
+                </lightning:card>
+                </div>
             </lightning:layout>
         </lightning:card>
 <!--    </aura:if>-->

@@ -18,13 +18,11 @@
 <!--            >>>>>>>>>SEKCJA: userId="{!v.userId}"-->
             <lightning:layout horizontalAlign="space" multipleRows="true">
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-                    userId SECTION ="{!v.userId}"
                     <c:CommentList objectId="{!v.objectId}"
                                    userId="{!v.userId}"
                                    propertiesInfo="{!v.objectProperties}"/>
                 </lightning:layoutItem>
                 <lightning:layoutItem class="slds-p-bottom_small slds-size_1-of-1">
-                    objectOwnerProperty="{!v.objectOwnerProperty}"
                     <c:CommentInput objectOwnerProperty="{!v.objectOwnerProperty}"
                                     objectId="{!v.objectId}"
                                     userId="{!v.userId}"/>

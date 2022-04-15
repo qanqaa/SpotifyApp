@@ -5,8 +5,7 @@
         <lightning:layout multipleRows="true">
             <aura:if isTrue="{!v.tracks.length > 0}">
                 <aura:iteration items="{!v.tracks}" var="track">
-                    <lightning:layoutItem size="12"
-                                          mediumDeviceSize="6"
+                    <lightning:layoutItem size="3"
                                           class="slds-p-bottom_small slds-p-right_small">
                         <c:FAV_Track id="{!track.id}"
                                     image="{!track.imageURL}"
@@ -17,7 +16,7 @@
                 <aura:set attribute="else">
                     <div class="slds-align_absolute-center"
                          style="height:5rem">
-                        No track records found
+                        Favorites list is empty!
                     </div>
                 </aura:set>
             </aura:if>

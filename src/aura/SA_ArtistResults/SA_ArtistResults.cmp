@@ -4,12 +4,12 @@
 <!--    <aura:attribute name="showResults" type="Boolean" default="false"/>-->
     <aura:attribute name="artists" type="Object[]"/>
 
-    <lightning:card title="Artists" iconName="utility:people">
+    <lightning:card title="Artists" iconName="utility:people" class="slds-card_boundary">
         <lightning:layout multipleRows="true">
             <aura:if isTrue="{!v.artists.length > 0}">
                 <aura:iteration items="{!v.artists}" var="artist">
                     <lightning:layoutItem size="12"
-                                          mediumDeviceSize="4"
+                                          mediumDeviceSize="4" 
                                           class="slds-p-bottom_small slds-p-right_small">
                         <c:SA_Artist id="{!artist.id}"
                                      image="{!artist.imageURL}"

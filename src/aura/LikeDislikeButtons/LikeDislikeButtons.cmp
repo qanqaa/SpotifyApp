@@ -12,24 +12,22 @@
         <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
         <aura:handler name="change" value="{!v.propertyItem}" action="{!c.doInit}"/>
 
-        <div class="slds-m-around_medium" style="display: flex">
-            <div style="padding-right: 5px">
-                obj id {!v.item.id}
-                propertyItem {!v.propertyItem.isFavourite__c}
+        <div class="slds-p-bottom_medium" style="display: flex">
+            <div style="padding-right: 10px">
                 <lightning:buttonIconStateful
-                        iconName="utility:favorite"
+                        iconName="utility:like"
                         selected="{! v.liked}"
                         onclick="{! c.handleLikeButtonClick }"
                         disabled="{! v.disliked}"
-                        alternativeText="Add to favourite list" />
+                        alternativeText="Add to favorites"/>
             </div>
             <div>
                 <lightning:buttonIconStateful
-                        iconName="utility:error"
+                        iconName="utility:dislike"
                         selected="{! v.disliked}"
                         disabled="{!v.liked}"
                         onclick="{! c.handleDislikeButtonClick }"
-                        alternativeText="Add to black list" />
+                        alternativeText="Add to blacklist"/>
             </div>
         </div>
 </aura:component>

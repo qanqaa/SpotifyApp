@@ -139,6 +139,7 @@ public with sharing class CommentSectionController {
                                 'ImageURL__c, Title__c, Artist_Name__c ' +
                                 'FROM Spotify_Property__c ' +
                                 'WHERE OwnerId = :currentUserId ' +
+                                'AND isFavourite__c = TRUE ' +
                                 'ORDER BY Title__c ASC'
                 );
 
@@ -171,6 +172,7 @@ public with sharing class CommentSectionController {
                                 'ImageURL__c, Title__c, Artist_Name__c ' +
                                 'FROM Spotify_Property__c ' +
                                 'WHERE OwnerId = :currentUserId ' +
+                                'AND isBlack__c = TRUE ' +
                                 'ORDER BY Title__c ASC'
                 );
 

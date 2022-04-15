@@ -12,21 +12,22 @@
     <aura:attribute name="objectProperties" type="Object"/>
 
     <lightning:card>
-<!--    <aura:if isTrue="{!v.showTrackResults}">-->
-        <lightning:layoutItem size="6"
-                              mediumDeviceSize="6"
-                              padding="around-small">
-            <c:FAV_TrackResults tracks="{!v.foundedTracks}"/>
-        </lightning:layoutItem>
-<!--    </aura:if>-->
+        <!--    <aura:if isTrue="{!v.showTrackResults}">-->
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="12"
+                                  padding="around-small">
+                <c:FAV_TrackResults tracks="{!v.foundedTracks}"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <!--    </aura:if>-->
 
-<!--    <aura:if isTrue="{!v.showArtistResults}">-->
-<!--        <lightning:layoutItem size="6"-->
-<!--                              mediumDeviceSize="6"-->
-<!--                              padding="around-small">-->
-<!--            <c:SA_ArtistResults artists="{!v.foundedArtists}"/>-->
-<!--        </lightning:layoutItem>-->
-<!--    </aura:if>-->
+        <!--    <aura:if isTrue="{!v.showArtistResults}">-->
+        <!--        <lightning:layoutItem size="6"-->
+        <!--                              mediumDeviceSize="6"-->
+        <!--                              padding="around-small">-->
+        <!--            <c:SA_ArtistResults artists="{!v.foundedArtists}"/>-->
+        <!--        </lightning:layoutItem>-->
+        <!--    </aura:if>-->
 
     </lightning:card>
     <c:Spinner aura:id='spinner'/>

@@ -13,11 +13,13 @@
 
     <lightning:card>
         <!--    <aura:if isTrue="{!v.showTrackResults}">-->
-        <lightning:layoutItem size="6"
-                              mediumDeviceSize="6"
+        <lightning:layout multipleRows="true">
+        <lightning:layoutItem size="12"
                               padding="around-small">
-            <c:FAV_TrackResults tracks="{!v.foundedTracks}"/>
+            <c:BLACK_TrackResults tracks="{!v.foundedTracks}"/>
         </lightning:layoutItem>
+        </lightning:layout>
+
         <!--    </aura:if>-->
 
         <!--    <aura:if isTrue="{!v.showArtistResults}">-->

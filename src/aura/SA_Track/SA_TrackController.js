@@ -5,12 +5,17 @@
     },
 
     onMouseOver : function(component, event, helper){
-        var track = component.find('trackOver');
-        $A.util.addClass(track,'focused');
+        var itemImage = component.find('itemImage');
+        $A.util.addClass(itemImage,'imageHover');
     },
 
     onMouseOut : function(component, event, helper){
-        var track = component.find('trackOver');
-        $A.util.removeClass(track,'focused');
+        var itemImage = component.find('itemImage');
+        $A.util.removeClass(itemImage,'imageHover');
+    },
+
+    doInit : function(component, event, helper){
+        var img = component.find('itemImage');
+        $A.util.addClass(img,'itemImage');
     },
 })

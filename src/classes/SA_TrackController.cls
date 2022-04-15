@@ -19,7 +19,7 @@ public with sharing class SA_TrackController {
                         'SELECT Id, ObjectId__c, OwnerId, Owner.Name, CreatedDate, ' +
                                 'Rating__c, Comment__c, isBlack__c, isFavourite__c  ' +
                                 'FROM Spotify_Property__c ' +
-                                'WHERE ObjectId__c = :objectId ' +
+                                'WHERE (ObjectId__c = :objectId) ' +
                                 'ORDER BY CreatedDate ASC');
         System.debug(objectSpotifyProperties);
         return objectSpotifyProperties;
